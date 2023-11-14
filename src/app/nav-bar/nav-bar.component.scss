@@ -1,0 +1,38 @@
+.container {
+    display: flex; /* Make the container a flex container */
+}
+
+.sideBar {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 10%;
+    border-right: 1px solid #D7DBDD;
+    background-color: #8dc63f;
+    padding: 10px;
+}
+
+.sideBar__item {
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #16A2D7;
+    font-size: 12px;
+}
+
+.sideBar__item.is-side-bar-item-selected {
+    background-color: #EEF3F5;
+    border-radius: 4px;
+}
+
+.sideBar img {
+    /* Set width and height to auto to maintain original size */
+    width: auto;
+    height: auto;
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+}
+.mainBar {
+    flex: 1; /* Takes up remaining space */
+    /* Other styles */
+}
