@@ -1,0 +1,31 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin alerts($alert-palette) {
+  @each $item in (success, error, warning, info) {
+    $item-colour: mat.get-color-from-palette($alert-palette, #{$item});
+    $text-colour: map-get(
+      $map: $item-colour,
+      $key: "text",
+    );
+
+    .toast-container .toast-#{$item} {
+      background-color: map-get($map: $item-colour, $key: "bg");
+      //border-color: map-get($map: $item-colour, $key: "border");
+      //color: $text-colour;
+
+      a {
+        color: white;
+
+        &:active,
+        &:focus {
+          color: white;
+        }
+
+        &:hover {
+          color: rgb(214, 210, 210);
+        }
+      }
+    }
+  }
+}

@@ -10,11 +10,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { NavbarModule } from './nav-bar/nav-bar.module';
+import { SelectComponent } from './shared/select/select.component';
+import { MatSelectModule } from '@angular/material/select';
+import { TimepickerComponent } from './shared/timepicker/timepicker.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    SelectComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +28,14 @@ import { NavbarModule } from './nav-bar/nav-bar.module';
     MatCardModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpClientModule,
+    HttpClientModule,    
     CommonModule,
-    NavbarModule
+    NavbarModule,
+    MatSelectModule,
+    TimepickerComponent
+  ],
+  exports:[
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

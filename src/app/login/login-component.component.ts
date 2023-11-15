@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 
 @Component({
-  selector: 'app-login-component',
   templateUrl: './login-component.component.html',
   styleUrls: ['./login-component.component.scss']
 })
@@ -14,6 +13,8 @@ export class LoginComponentComponent implements OnInit{
   constructor(private router: Router,private authService: AuthService) {}
 
   ngOnInit(): void {
+    console.log("here");
+  
     this.authService.setLoginStatus(false);
   }
   form: FormGroup = new FormGroup({
@@ -33,7 +34,7 @@ export class LoginComponentComponent implements OnInit{
       if(usernameValue==='123' && passwordValue==='123'){
       
         this.authService.setLoginStatus(true);
-        this.router.navigate(['/heros']);
+        this.router.navigate(['/searching']);
       }
       else{
         this.errorMessage="Incorrect username or password"

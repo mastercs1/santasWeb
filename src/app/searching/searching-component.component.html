@@ -1,0 +1,30 @@
+<form
+  [formGroup]="form"
+  #formDirective="ngForm"
+  class="flex flex-col gap-1 md:gap-4"
+>
+<div class="w-full gap-4 md:w-1/2">
+    <h2>Searching Applicant</h2>
+  </div>
+  <mat-divider  class="mt-4"></mat-divider>
+ 
+
+  <div
+    class="mt-2 pt-8 flex flex-col items-center justify-between sm:gap-1 md:flex-row md:gap-5"
+  >
+  <app-timepicker  (dateSelected)="handleDateSelection($event)"></app-timepicker>
+  </div>
+  <div
+  class="mt-2 pt-2 flex flex-col items-center justify-between sm:gap-1 md:flex-row md:gap-5"
+>
+<app-timepicker  (dateSelected)="handleDateSelection($event)"></app-timepicker>
+</div>
+  <mat-divider class="mt-2"></mat-divider>
+
+
+  <div class="pt-6 ...">pt-6</div>
+  <div class="pr-4 ...">pr-4</div>
+  <div class="pb-8 ...">pb-8</div>
+  <div class="pl-2 ...">pl-2</div>
+
+</form>
