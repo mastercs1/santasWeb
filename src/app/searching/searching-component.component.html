@@ -1,30 +1,68 @@
-<form
-  [formGroup]="form"
-  #formDirective="ngForm"
-  class="flex flex-col gap-1 md:gap-4"
->
-<div class="w-full gap-4 md:w-1/2">
+
+<form [formGroup]="form" #formDirective="ngForm" class="flex flex-col gap-1 md:gap-4">
+  <div class="w-full gap-4 md:w-1/2">
     <h2>Searching Applicant</h2>
   </div>
-  <mat-divider  class="mt-4"></mat-divider>
- 
+  <mat-divider class="mt-4"></mat-divider>
+  <div class="container m-auto grid grid-cols-12 gap-4 gap-4">
+    <div class="col-start-1 col-span-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Surname</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="surname">
+        <mat-hint>* as wildCard</mat-hint>
+      </mat-form-field>
+    </div>
 
-  <div
-    class="mt-2 pt-8 flex flex-col items-center justify-between sm:gap-1 md:flex-row md:gap-5"
-  >
-  <app-timepicker  (dateSelected)="handleDateSelection($event)"></app-timepicker>
+    <div class="col-start-3 col-span-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Given</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="givens">
+        <mat-hint>* as wildCard</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-start-5 col-span-3" >
+      <mat-form-field appearance="fill" class="w-full" >
+       <mat-label>Reference</mat-label>
+       <input matInput placeholder="Placeholder" formControlName="reference">
+       <mat-hint>9 digit long</mat-hint>
+     </mat-form-field> 
+     <!-- <h1 class="tile-marker">TWO</h1> -->
+   </div>
+   <!--buton size is not changed before till add style inline .. -->
+
+   <div class="col-start-8 col-span-1 row-span-2">
+    <button class="h-full w-full" id="basic" type="button" mat-raised-button color="{{color}}" style="height: 100%; width: 100%;">
+      raised-button
+    </button>
   </div>
-  <div
-  class="mt-2 pt-2 flex flex-col items-center justify-between sm:gap-1 md:flex-row md:gap-5"
->
-<app-timepicker  (dateSelected)="handleDateSelection($event)"></app-timepicker>
-</div>
+  
+    
+    <div class=" col-start-1 col-span-2">
+      <app-timepicker  (dateSelected)="handleDateSelection($event)"></app-timepicker>
+    </div>
+
+    <div class="col-start-3 col-span-1">
+      <mat-form-field appearance="fill">
+        <mat-label>CourseCode</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="courseCode">
+        <mat-hint></mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-start-5 col-span-3">
+      <mat-form-field appearance="fill"  class="w-full">
+        <mat-label>Cycle</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="cycle">
+        <mat-hint>Not show colosed cycles</mat-hint>
+      </mat-form-field>
+     
+    </div>
+ 
+    
+ 
+  </div>
+  
+
   <mat-divider class="mt-2"></mat-divider>
 
-
-  <div class="pt-6 ...">pt-6</div>
-  <div class="pr-4 ...">pr-4</div>
-  <div class="pb-8 ...">pb-8</div>
-  <div class="pl-2 ...">pl-2</div>
 
 </form>

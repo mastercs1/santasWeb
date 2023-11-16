@@ -6,6 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatDividerModule} from '@angular/material/divider'; 
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import { TimepickerComponent } from '../shared/timepicker/timepicker.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [SearchingComponentComponent],
@@ -15,6 +18,9 @@ import { TimepickerComponent } from '../shared/timepicker/timepicker.component';
     MatDividerModule,
     MatFormFieldModule,
     TimepickerComponent,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
     RouterModule.forChild([
       {path:'',component:SearchingComponentComponent}
     ])
