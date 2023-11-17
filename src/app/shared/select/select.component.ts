@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
-import { MatSelectChange } from '@angular/material/select';
+import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import {TextConstantsComponent} from "src/app/constants/text.constants.component";
 
 
@@ -9,6 +9,8 @@ import {TextConstantsComponent} from "src/app/constants/text.constants.component
   selector: 'app-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
+  imports:[MatSelectModule,ReactiveFormsModule],
+  standalone: true
 })
 export class SelectComponent implements OnInit {
   @Input()

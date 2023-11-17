@@ -18,7 +18,7 @@ import { TimepickerComponent } from './shared/timepicker/timepicker.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SelectComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -32,7 +32,8 @@ import { TimepickerComponent } from './shared/timepicker/timepicker.component';
     CommonModule,
     NavbarModule,
     MatSelectModule,
-    TimepickerComponent
+    TimepickerComponent,
+    SelectComponent
   ],
   exports:[
     
