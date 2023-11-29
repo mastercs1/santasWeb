@@ -6,16 +6,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatDividerModule} from '@angular/material/divider'; 
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {TimepickerComponent } from '../shared/timepicker/timepicker.component';
+import {SelectComponent } from '../shared/select/select.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import {SelectComponent} from '../shared/select/select.component'
+import { DatePipe } from '@angular/common';
+
 @NgModule({
   declarations: [
     SearchingComponentComponent,
   ],
   imports: [
     CommonModule,
+    SelectComponent,
     ReactiveFormsModule,
     MatDividerModule,
     MatFormFieldModule,
@@ -23,11 +26,13 @@ import {SelectComponent} from '../shared/select/select.component'
     MatInputModule,
     MatButtonModule,
     TimepickerComponent,
-    SelectComponent,
     RouterModule.forChild([
       {path:'',component:SearchingComponentComponent}
     ])
   ],
-  exports:[SearchingComponentComponent]
+  exports:[
+    SearchingComponentComponent,
+  ],
+  providers: [DatePipe]
 })
 export class SearchingModule { }
