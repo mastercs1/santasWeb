@@ -16,9 +16,9 @@ export class SearchingComponentComponent implements OnInit {
   constructor(private service: SearchingServiceService, private datePipe:DatePipe) { 
     this.form= new FormGroup({
       dob: new FormControl(''),
-      surname: new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z]+$')]),
-      givens: new FormControl(''),
-      reference: new FormControl(''),
+      surname: new FormControl('',[Validators.required,Validators.pattern('^(?![*])[a-zA-Z]+$')]),
+      givens: new FormControl('', [Validators.required,Validators.pattern('^(?![*])[a-zA-Z]+$')]),
+      reference: new FormControl('', [Validators.required,Validators.pattern('^[0-9]{9}$')]),
       courseCode: new FormControl(''),
       cycle: new FormControl(''),
       },
