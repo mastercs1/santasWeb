@@ -1,24 +1,41 @@
-import { AbstractControl, ValidationErrors, ValidatorFn ,FormGroup} from "@angular/forms";
+import {
+  AbstractControl,
+  ValidationErrors,
+  ValidatorFn,
+  FormGroup,
+} from '@angular/forms';
 
 export class FilterValidators {
-    static atLeastOneFilter(): ValidatorFn {
-        return (control: AbstractControl): ValidationErrors | null => {
-            if (!(control instanceof FormGroup)) {
-                return null; // Validation doesn't apply to non-FormGroup controls
-            }
+  static atLeastOneFilter(
+    dob: string,
+    surname: string,
+    givens: string,
+    reference: string,
+    courseCode: string,
+    cycle: string
+  ): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const dobControl = control.get(dob);
+      const surnameControl = control.get(surname);
+      const givensControl = control.get(givens);
+      const referenceControl = control.get(reference);
+      const courseCodeControl = control.get(courseCode);
+      const cycleControl = control.get(cycle);
 
-            const formGroup = control as FormGroup;
-            const controls = formGroup.controls;
-            let hasValue = false;
-  
-            Object.keys(controls).forEach(key => {
-                const currentValue = controls[key].value;
-                if (currentValue !== null && currentValue !== undefined && currentValue !== '') {
-                    hasValue = true;
-                }
-            });
-
-            return hasValue ? null : { atLeastOneRequired: true };
-        };
-    }
+      if (referenceControl?.value !== null && referenceControl?.value!=='') {
+        return null;
+      } else {
+        if (
+          (dobControl?.value == null || dobControl?.value=='')
+          && (surnameControl?.value == null || surnameControl?.value=='')
+          && (givensControl?.value == null ||givensControl?.value == '')
+          &&(courseCodeControl?.value==null || courseCodeControl?.value=='')
+          && (cycleControl?.value==null || cycleControl?.value=='')
+        ) {
+          return { atLeastOneRequired: false };
+        }
+      }
+      return null;
+    };
+  }
 }

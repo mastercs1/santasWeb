@@ -1,35 +1,44 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup,ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { SearchingServiceService } from './searching-service.service';
 import { NameDescription } from '../interface/nameDescription';
 import { DatePipe } from '@angular/common';
 import {FilterValidators} from '../validators/FilterValidators'
+import {FormUtils} from '../utils/formUtils'
 
 @Component({
   selector: 'app-searching-component',
   templateUrl: './searching-component.component.html',
   styleUrls: ['./searching-component.component.scss']
 })
-export class SearchingComponentComponent implements OnInit {
-  form: FormGroup;
+
+export class SearchingComponentComponent implements OnInit{
+  form!: FormGroup;
 
   constructor(private service: SearchingServiceService, private datePipe:DatePipe) { 
-    this.form= new FormGroup({
-      dob: new FormControl(''),
-      surname: new FormControl('',[Validators.required,Validators.pattern('^(?![*])[a-zA-Z]+$')]),
-      givens: new FormControl('', [Validators.required,Validators.pattern('^(?![*])[a-zA-Z]+$')]),
-      reference: new FormControl('', [Validators.required,Validators.pattern('^[0-9]{9}$')]),
-      courseCode: new FormControl(''),
-      cycle: new FormControl(''),
-      },
-    {validators:FilterValidators.atLeastOneFilter});
   }
+
+
   cycles!: NameDescription[];
 
   @Output() searchData = new EventEmitter<any>();
 
 
   ngOnInit(): void {
+   
+    this.form= new FormGroup({
+      dob: new FormControl(''),
+      surname: new FormControl('',[FormUtils.letterWithStarValidator]),
+      givens: new FormControl('',[FormUtils.letterWithStarValidator]),
+      reference: new FormControl(''),
+      courseCode: new FormControl(''),
+      cycle: new FormControl(''),
+      },
+    {validators:FilterValidators.atLeastOneFilter("dob","surname","givens","reference","courseCode","cycle")});
+
+
+
+
     this.service.getCycles().subscribe({
       next: (cycles: any[]) => {
         const nameDescriptions: NameDescription[] = cycles.map((cycle: any) => {

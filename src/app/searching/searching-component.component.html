@@ -11,6 +11,9 @@
         <input matInput   formControlName="surname">
         <mat-hint>* as wildCard</mat-hint>
       </mat-form-field>
+      <mat-error *ngIf="this.form.controls['surname'].hasError('pattern')">
+        only letter and * allowed and * cannot be the first place.
+      </mat-error>
     </div>
 
     <div class="col-start-3 col-span-2">
@@ -19,12 +22,18 @@
         <input matInput  formControlName="givens">
         <mat-hint>* as wildCard</mat-hint>
       </mat-form-field>
+      <mat-error *ngIf="this.form.controls['givens'].hasError('pattern')">
+        only letter and * allowed and * cannot be the first place.
+      </mat-error>
     </div>
     <div class="col-start-5 col-span-3" >
       <mat-form-field appearance="fill" class="w-4/5" >
        <mat-label>Reference</mat-label>
        <input matInput  formControlName="reference" >
        <mat-hint>9 digit long</mat-hint>
+       <mat-error *ngIf="this.form.controls['reference'].hasError('pattern')">
+        only number allowed and 9 digits required
+      </mat-error>
      </mat-form-field> 
      <!-- <h1 class="tile-marker">TWO</h1> -->
    </div>
