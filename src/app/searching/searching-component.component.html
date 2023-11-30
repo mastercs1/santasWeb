@@ -11,7 +11,7 @@
         <input matInput   formControlName="surname">
         <mat-hint>* as wildCard</mat-hint>
       </mat-form-field>
-      <mat-error *ngIf="this.form.controls['surname'].hasError('pattern')">
+      <mat-error *ngIf="this.form.controls['surname'].hasError('invalid')">
         only letter and * allowed and * cannot be the first place.
       </mat-error>
     </div>
@@ -22,7 +22,7 @@
         <input matInput  formControlName="givens">
         <mat-hint>* as wildCard</mat-hint>
       </mat-form-field>
-      <mat-error *ngIf="this.form.controls['givens'].hasError('pattern')">
+      <mat-error *ngIf="this.form.controls['givens'].hasError('invalid')">
         only letter and * allowed and * cannot be the first place.
       </mat-error>
     </div>
@@ -43,7 +43,7 @@
    <!--todo color need define in a interface or eunm for: 1 if nothing input then button is grey otherwsie it trun green -->
    <div class="col-start-8 col-span-1 row-span-2">
     <button class="h-full w-full" id="basic" type="button" mat-raised-button [disabled]="form.invalid" style="height: 100%; width: 100%;" (click)="emitFormData()">
-      raised-button
+      Searching
     </button>
   </div>
   
