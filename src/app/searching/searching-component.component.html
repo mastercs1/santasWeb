@@ -1,4 +1,3 @@
-
 <form [formGroup]="form" #formDirective="ngForm" class="flex flex-col gap-1 md:gap-4">
   <div class="w-full gap-4 md:w-1/2">
     <h2>Searching Applicant</h2>
@@ -8,7 +7,7 @@
     <div class="col-start-1 col-span-2">
       <mat-form-field appearance="fill">
         <mat-label>Surname</mat-label>
-        <input matInput   formControlName="surname">
+        <input matInput formControlName="surname">
         <mat-hint>* as wildCard</mat-hint>
       </mat-form-field>
       <mat-error *ngIf="this.form.controls['surname'].hasError('invalid')">
@@ -19,73 +18,55 @@
     <div class="col-start-3 col-span-2">
       <mat-form-field appearance="fill">
         <mat-label>Given</mat-label>
-        <input matInput  formControlName="givens">
+        <input matInput formControlName="givens">
         <mat-hint>* as wildCard</mat-hint>
       </mat-form-field>
       <mat-error *ngIf="this.form.controls['givens'].hasError('invalid')">
         only letter and * allowed and * cannot be the first place.
       </mat-error>
     </div>
-    <div class="col-start-5 col-span-3" >
-      <mat-form-field appearance="fill" class="w-4/5" >
-       <mat-label>Reference</mat-label>
-       <input matInput  formControlName="reference" >
-       <mat-hint>9 digit long</mat-hint>
-       <mat-error *ngIf="this.form.controls['reference'].hasError('invalid')">
-        only number allowed and 9 digits required
-      </mat-error>
-     </mat-form-field> 
-     <!-- <h1 class="tile-marker">TWO</h1> -->
-   </div>
-   <!--buton size is not changed before till add style inline .. -->
+    <div class="col-start-5 col-span-3">
+      <mat-form-field appearance="fill" class="w-4/5">
+        <mat-label>Reference</mat-label>
+        <input matInput formControlName="reference">
+        <mat-hint>9 digit long</mat-hint>
+        <mat-error *ngIf="this.form.controls['reference'].hasError('invalid')">
+          only number allowed and 9 digits required
+        </mat-error>
+      </mat-form-field>
+      <!-- <h1 class="tile-marker">TWO</h1> -->
+    </div>
+    <!--buton size is not changed before till add style inline .. -->
 
 
-   <!--todo color need define in a interface or eunm for: 1 if nothing input then button is grey otherwsie it trun green -->
-   <div class="col-start-8 col-span-1 row-span-2">
-    <button class="h-full w-full" id="basic" type="button" mat-raised-button [disabled]="form.invalid" style="height: 100%; width: 100%;" (click)="emitFormData()">
-      Searching
-    </button>
-  </div>
-  
-    
+    <!--todo color need define in a interface or eunm for: 1 if nothing input then button is grey otherwsie it trun green -->
+    <div class="col-start-8 col-span-1 row-span-2">
+      <button class="h-full w-full" id="basic" type="button" mat-raised-button [disabled]="form.invalid"
+        style="height: 100%; width: 100%;" (click)="emitFormData()">
+        Searching
+      </button>
+    </div>
+
+
     <div class=" col-start-1 col-span-2">
-      <app-timepicker  (dateSelected)="handleDateSelection($event)" date_label="Date of Birth"  [control]="$any(form).get('dob')"></app-timepicker>
+      <app-timepicker (dateSelected)="handleDateSelection($event)" date_label="Date of Birth"
+        [control]="$any(form).get('dob')"></app-timepicker>
     </div>
 
     <div class="col-start-3 col-span-1">
       <mat-form-field appearance="fill">
         <mat-label>CourseCode</mat-label>
-        <input matInput  formControlName="courseCode">
+        <input matInput formControlName="courseCode">
         <mat-hint></mat-hint>
       </mat-form-field>
     </div>
     <div class="col-start-5 col-span-3" style="padding:0;">
-      <app-select
-      label="Cycles"
-      class="w-full md:w-1/2"
-      [control]="$any(form).get('cycle')"
-      [items]="cycles"
-      ></app-select>
-
-
-     
+      <app-select label="Cycles" class="w-full md:w-1/2" [control]="$any(form).get('cycle')"
+        [items]="cycles"></app-select>
     </div>
-
-    <!-- <app-select
-    class="w-full md:w-1/2"
-    label="Country of Birth"
-    [control]="$any(form).get('cofBirth')"
-    [items]="countries"
-    errorMessage="Country of Birth is required."
-  >
-  </app-select> -->
- 
-    
- 
   </div>
-  
-
   <mat-divider class="mt-2"></mat-divider>
+
 
 
 </form>

@@ -14,7 +14,7 @@ import { Utils } from './utils';
 export class FormUtils {
   //
   static verifyStringWithStar(inputDate: string): boolean {
-    return Utils.regexTest(/^(?![*])[a-zA-Z]+$/, inputDate);
+    return Utils.regexTest(/^[a-zA-Z][a-zA-Z*]*$/, inputDate);
   }
 
 static verifyNineDigit(inputDate : string): boolean {
