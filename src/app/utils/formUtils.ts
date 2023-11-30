@@ -11,12 +11,14 @@ import {
 import { Observable, debounceTime, filter, map, switchMap, take } from 'rxjs';
 import { Utils } from './utils';
 
-
 export class FormUtils {
-  
-//
-static verifyStringWithStar(inputDate : string) :boolean{
-  return   Utils.regexTest(/^(?![*])[a-zA-Z]+$/, inputDate);
+  //
+  static verifyStringWithStar(inputDate: string): boolean {
+    return Utils.regexTest(/^(?![*])[a-zA-Z]+$/, inputDate);
+  }
+
+static verifyNineDigit(inputDate : string): boolean {
+  return Utils.regexTest(/^[0-9]{9}$/, inputDate);
 }
 
 
@@ -27,19 +29,33 @@ static verifyStringWithStar(inputDate : string) :boolean{
     );
   }
 
-  static letterWithStarValidator :ValidatorFn = (
-    control:AbstractControl
-  ): ValidationErrors | null =>{
-   
-     if(control?.value){
-         const stringValue = control.value;
-         if(!this.verifyStringWithStar(stringValue)){
-          return { letterWithStarvalidator: true };
-         }
-         return null;
-     }
-     return null;
-  }
+  static letterWithStarValidator: ValidatorFn = (
+    control: AbstractControl
+  ): ValidationErrors | null => {
+    if (control?.value) {
+      const stringValue = control.value;
+      if (!this.verifyStringWithStar(stringValue)) {
+        control.setErrors({invalid: true})
+        return { invalid: true };
+      }
+      return null;
+    }
+    return null;
+  };
+
+  static referenceValidator: ValidatorFn = (
+    control: AbstractControl
+  ): ValidationErrors | null => {
+    if (control?.value) {
+      const stringValue = control.value;
+      if (!this.verifyNineDigit(stringValue)) {
+        control.setErrors({ invalid: true });
+        return { invalid: true };
+      }
+      return null;
+    }
+    return null;
+  };
 
   static SelectionRequiredValidator: ValidatorFn = (
     control: AbstractControl
@@ -53,7 +69,6 @@ static verifyStringWithStar(inputDate : string) :boolean{
   ) {
     this.toggleValidators(control, addOrClear, [Validators.required]);
   }
-
 
   static toggleValidators(
     control: AbstractControl,
@@ -252,8 +267,6 @@ static verifyStringWithStar(inputDate : string) :boolean{
     }
   }
 
-
-
   static EmailPwdValidator(email: string, password: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       // Can't access email/pwd control without visiting 'parent' prop
@@ -273,5 +286,4 @@ static verifyStringWithStar(inputDate : string) :boolean{
       return null;
     };
   }
-
 }

@@ -29,15 +29,12 @@ export class SearchingComponentComponent implements OnInit{
     this.form= new FormGroup({
       dob: new FormControl(''),
       surname: new FormControl('',[FormUtils.letterWithStarValidator]),
-      givens: new FormControl('',[FormUtils.letterWithStarValidator]),
-      reference: new FormControl(''),
+      givens: new FormControl('', [FormUtils.letterWithStarValidator]),
+      reference: new FormControl('', [FormUtils.referenceValidator]),
       courseCode: new FormControl(''),
       cycle: new FormControl(''),
       },
     {validators:FilterValidators.atLeastOneFilter("dob","surname","givens","reference","courseCode","cycle")});
-
-
-
 
     this.service.getCycles().subscribe({
       next: (cycles: any[]) => {
