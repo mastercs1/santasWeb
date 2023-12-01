@@ -11,6 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { DatePipe } from '@angular/common';
+import { ApplicantTableModule } from '../applicants-table/applicant-table.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DatePipe } from '@angular/common';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
+    ApplicantTableModule,
     TimepickerComponent,
     RouterModule.forChild([
       {path:'',component:SearchingComponentComponent}

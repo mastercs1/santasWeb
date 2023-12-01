@@ -5,6 +5,7 @@ import { NameDescription } from '../interface/nameDescription';
 import { DatePipe } from '@angular/common';
 import {FilterValidators} from '../validators/FilterValidators'
 import {FormUtils} from '../utils/formUtils'
+import { Applicant } from '../interface/applicant';
 
 @Component({
   selector: 'app-searching-component',
@@ -14,6 +15,9 @@ import {FormUtils} from '../utils/formUtils'
 
 export class SearchingComponentComponent implements OnInit{
   form!: FormGroup;
+  
+  applicants!: Applicant[];
+  searchDataFromParent!:any;
 
   constructor(private service: SearchingServiceService, private datePipe:DatePipe) { 
   }
@@ -72,6 +76,7 @@ export class SearchingComponentComponent implements OnInit{
       const formData = this.form.value;
       console.log(formData); // Log the form data to the console for debugging purposes
       this.searchData.emit(formData); // Emit the form data when the button is clicked
+      this.searchDataFromParent=formData;
     } else {
       // Handle if the form is invalid
       console.log('Form is invalid.');
