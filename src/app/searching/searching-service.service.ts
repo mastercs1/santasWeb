@@ -28,7 +28,8 @@ export class SearchingServiceService implements OnInit {
    }
 
 // passing applicant in request to get list of <applicant>
-
+//todo add headeroption and send as jSON payload , backend need to define the payload json and change the methods. 
+//currently it is call the url but without the payload. 
    getApplicants(surname:string, 
                  given:string,
                  reference:string,

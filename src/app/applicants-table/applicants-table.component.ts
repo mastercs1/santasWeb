@@ -35,6 +35,7 @@ export class ApplicantsTableComponent implements OnInit{
        const referenceValue = this.receivedSearchData?.reference||'';
        const courseCodeValue = this.receivedSearchData?.courseCode||'';
        const cycleValue = this.receivedSearchData?.cycle||'';
+       this.dataSource.data=[];
        
        this.sub= this.searchingService.getApplicants(surnameValue,givensValue,referenceValue,dobValue,courseCodeValue,cycleValue).subscribe({
           next:applicants => {
