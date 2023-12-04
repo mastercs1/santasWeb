@@ -35,7 +35,7 @@ export class SearchingServiceService implements OnInit {
                  reference:string,
                  dob:string,
                  courseCode:string,
-                 cycleCode:string): Observable<ApplicantResponse>{
+                 cycle:string): Observable<ApplicantResponse>{
     const getIndividualUrl = `${this.applicantUrl}`
    
     let headers = new HttpHeaders({
@@ -49,7 +49,7 @@ export class SearchingServiceService implements OnInit {
       reference,
       dob,
       courseCode,
-      cycleCode
+      cycle
     };
 
     return  this.http.post<ApplicantResponse>(getIndividualUrl,JSON.stringify(requestBody),options);
