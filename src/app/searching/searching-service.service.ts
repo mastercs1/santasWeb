@@ -1,8 +1,8 @@
 import { Injectable , OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject, catchError, tap ,throwError} from "rxjs";
 import { Cycle } from '../interface/cycle';
-import { Applicant } from '../interface/applicant';
+import { ApplicantResponse }  from '../interface/applicantResponse'
 
 @Injectable({
   providedIn: 'root'
@@ -35,18 +35,24 @@ export class SearchingServiceService implements OnInit {
                  reference:string,
                  dob:string,
                  courseCode:string,
-                 cycleCode:string): Observable<Applicant[]>{
+                 cycleCode:string): Observable<ApplicantResponse>{
     const getIndividualUrl = `${this.applicantUrl}`
+   
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'});
+    
+    let options = { headers: headers };
+
     const requestBody = {
-      surname,
-      given,
+      surname, 
+      given, 
       reference,
       dob,
       courseCode,
       cycleCode
     };
 
-    return  this.http.post<Applicant[]>(getIndividualUrl,requestBody);
+    return  this.http.post<ApplicantResponse>(getIndividualUrl,JSON.stringify(requestBody),options);
   
    }
    

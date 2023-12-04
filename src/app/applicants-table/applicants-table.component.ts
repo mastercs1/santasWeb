@@ -1,4 +1,4 @@
-import { Component, OnInit,Input,OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit,Input,OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { SearchingServiceService } from '../searching/searching-service.service';
 import { Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
@@ -35,14 +35,20 @@ export class ApplicantsTableComponent implements OnInit{
        const referenceValue = this.receivedSearchData?.reference||'';
        const courseCodeValue = this.receivedSearchData?.courseCode||'';
        const cycleValue = this.receivedSearchData?.cycle||'';
-       this.dataSource.data=[];
-       
+      // this.dataSource.data=[];
+      let localData = [];
        this.sub= this.searchingService.getApplicants(surnameValue,givensValue,referenceValue,dobValue,courseCodeValue,cycleValue).subscribe({
-          next:applicants => {
-            console.log('data got from searching' + JSON.stringify(applicants))
-            this.dataSource.data=applicants;
+          next:response => {
+            console.log('data got from searching' + JSON.stringify(response))
+            localData = response.applicants; // Assign to the local variable
+            console.log(localData);
+            this.dataSource.data=response.applicants;
             console.log(this.dataSource.data);
           
+          },
+          error: err => {
+            console.error('Error occurred:', err);
+            // Handle error scenario
           }
        })
        
