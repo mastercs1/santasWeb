@@ -2,11 +2,12 @@ import { Component, OnInit,Input,OnChanges, SimpleChanges, ChangeDetectorRef } f
 import { SearchingServiceService } from '../searching/searching-service.service';
 import { Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
+import {NoteComponent} from '../shared/dialog/note/note.component'
 
 @Component({
   selector: 'app-applicants-table',
   templateUrl: './applicants-table.component.html',
-  styleUrls: ['./applicants-table.component.scss']
+  styleUrls: ['./applicants-table.component.scss'],
 })
 
 
@@ -16,7 +17,7 @@ export class ApplicantsTableComponent implements OnInit{
   sub!: Subscription;
   dataSource = new MatTableDataSource();
   
-  displayedColumns: string[] = ['Reference','Surname','Givens','Dob','Course Code','Cycle']
+  displayedColumns: string[] = ['Reference','Surname','Givens','Dob','Course Code','Cycle','Action']
 
 
  constructor(private searchingService :SearchingServiceService){}
