@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule} from '@angular/material/button';
 import { RouterModule } from '@angular/router';
-
+import {MatBadgeModule} from '@angular/material/badge';
 
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatTableModule  } from '@angular/material/table';
@@ -23,7 +23,8 @@ export const ANGULAR_MODULES: any[] = [CommonModule,RouterModule];
   imports: [
     MATERIAL_MODULES,
     ANGULAR_MODULES,
-    NoteComponent
+    NoteComponent,
+    MatBadgeModule
   ],
   exports :[ApplicantsTableComponent]
 })

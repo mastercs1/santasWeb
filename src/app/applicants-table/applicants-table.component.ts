@@ -2,7 +2,7 @@ import { Component, OnInit,Input,OnChanges, SimpleChanges, ChangeDetectorRef } f
 import { SearchingServiceService } from '../searching/searching-service.service';
 import { Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
-import {NoteComponent} from '../shared/dialog/note/note.component'
+
 
 @Component({
   selector: 'app-applicants-table',
@@ -16,7 +16,6 @@ export class ApplicantsTableComponent implements OnInit{
   @Input() receivedSearchData: any;
   sub!: Subscription;
   dataSource = new MatTableDataSource();
-  
   displayedColumns: string[] = ['Reference','Surname','Givens','Dob','Course Code','Cycle','Action']
 
 
@@ -54,5 +53,17 @@ export class ApplicantsTableComponent implements OnInit{
        })
        
     }
+  }
+  viewNotes(){
+    console.log("view notes");
+  }
+
+  notifyParent(currentNoteNumber:number,applicantId:number){
+    const updatedData = this.dataSource.data.map((applicant: any)=>{
+     if(applicantId===applicant.applicantId){
+       applicant.noteNumber=currentNoteNumber; // update the note number and this is only number add not call service , when cilck on givens it will call note service to get notes
+     }
+    });
+    console.log("get note numbner in table : " + currentNoteNumber);
   }
 }

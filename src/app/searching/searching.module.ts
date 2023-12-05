@@ -12,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { DatePipe } from '@angular/common';
 import { ApplicantTableModule } from '../applicants-table/applicant-table.module';
+import {MatDialogModule} from '@angular/material/dialog'
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ApplicantTableModule } from '../applicants-table/applicant-table.module
     MatButtonModule,
     ApplicantTableModule,
     TimepickerComponent,
+    MatDialogModule,
     RouterModule.forChild([
       {path:'',component:SearchingComponentComponent}
     ])

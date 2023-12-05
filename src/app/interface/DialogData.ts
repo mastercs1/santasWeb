@@ -1,4 +1,6 @@
 export interface DialogData {
     surname: string;
-    given: string;
+    givens: string;
+    applicantId:number;
+    noteNumber:number;
   }

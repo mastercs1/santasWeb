@@ -4,7 +4,8 @@ import { NavbarComponent } from './nav-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
-
+import { MatInputModule } from '@angular/material/input';
+MatInputModule
 @NgModule({
   declarations: [NavbarComponent],
   imports: [
@@ -12,7 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatToolbarModule,
     RouterModule,
     MatButtonModule,
-  
+    MatInputModule
     
   ],
   exports:[

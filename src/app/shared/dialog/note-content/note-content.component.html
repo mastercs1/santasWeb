@@ -1,12 +1,18 @@
-<h1 mat-dialog-title>Hi {{data.given}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.given">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.given" cdkFocusInitial>Ok</button>
-</div>
+<div class="container m-auto grid grid-cols-1 gap-4">
+  <div class="flex justify-center">
+    <h3 mat-dialog-title>Create Note for {{data.givens}} {{data.surname}}</h3>
+  </div>
+  
+  <div mat-dialog-content class="flex justify-left">
+    <mat-form-field class="w-full custom-textarea" appearance="fill">
+      <textarea matInput placeholder="Create Note" class="w-full h-full" appearance="fill"  [(ngModel)]="textareaValue"></textarea>
+    </mat-form-field>
+  </div>
 
+  <div class="flex justify-center mt-4">
+    <div mat-dialog-actions>
+      <button (click)="saveAndCloseDialog()">OK</button>
+      <button (click)="dialogRef.close()">Cancel</button>
+    </div>
+  </div>
+</div>

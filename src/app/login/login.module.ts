@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [LoginComponentComponent],
   imports: [
@@ -12,6 +13,7 @@ import { Router, RouterModule } from '@angular/router';
     MatCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatInputModule,
     RouterModule.forChild([
       {path: '', component: LoginComponentComponent}
     ]),
