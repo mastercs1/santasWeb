@@ -1,0 +1,16 @@
+.example-card {
+    max-width: full;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  .mat-paginator-page-size {
+    display: none; /* Hide the "Items per page" label */
+  }
+  
+  .mat-paginator-range-label {
+    display: none; /* Hide the page range label if needed */
+  }
+  

@@ -4,6 +4,7 @@ import { Observable, Subject, catchError, tap ,throwError} from "rxjs";
 import { Cycle } from '../interface/cycle';
 import { ApplicantResponse }  from '../interface/ApplicantResponse'
 import { NoteResponse } from '../interface/noteResponse';
+import { Note } from '../interface/note';
 
 @Injectable({
   providedIn: 'root'
@@ -71,4 +72,9 @@ export class SearchingServiceService implements OnInit {
   
       return  this.http.post<NoteResponse>(getIndividualUrl,JSON.stringify(requestBody),options);
   }
+  // get notes for an applicant 
+  getNotes(applicantId:number): Observable<Note[]>{
+    const getIndividualUrl = `${this.noteRul}/`+applicantId;
+    return this.http.get<Note[]>(getIndividualUrl);
+  } 
 }

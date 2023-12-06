@@ -24,8 +24,6 @@ export class NoteContentComponent {
     public dialogRef: DialogRef<NoteContentComponent>,
     private service: SearchingServiceService,
     @Inject(DIALOG_DATA) public data: DialogData) {
-      
-      
     }
 
   onNoClick(): void {

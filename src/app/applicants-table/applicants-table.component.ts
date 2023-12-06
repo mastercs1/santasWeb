@@ -2,6 +2,9 @@ import { Component, OnInit,Input,OnChanges, SimpleChanges, ChangeDetectorRef } f
 import { SearchingServiceService } from '../searching/searching-service.service';
 import { Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { NoteSummaryComponent } from '../shared/dialog/note-summary/note-summary.component';
+import { Applicant } from '../interface/applicant';
 
 
 @Component({
@@ -19,7 +22,7 @@ export class ApplicantsTableComponent implements OnInit{
   displayedColumns: string[] = ['Reference','Surname','Givens','Dob','Course Code','Cycle','Action']
 
 
- constructor(private searchingService :SearchingServiceService){}
+ constructor(private searchingService :SearchingServiceService,private dialog: MatDialog){}
 
   ngOnInit(): void {
     console.log('get from parent' + this.receivedSearchData);
@@ -54,8 +57,11 @@ export class ApplicantsTableComponent implements OnInit{
        
     }
   }
-  viewNotes(){
-    console.log("view notes");
+  viewNotes(applicant:Applicant){
+    const dialogRef = this.dialog.open(NoteSummaryComponent, {
+      width: '500px',
+      data: {surname: applicant.surname, givens: applicant.givens , applicantId:applicant.applicantId} // Pass applicant data to ViewNotesComponent if needed
+    });
   }
 
   notifyParent(currentNoteNumber:number,applicantId:number){

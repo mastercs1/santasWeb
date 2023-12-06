@@ -28,7 +28,7 @@
                     matBadge={{applicant.noteNumber}} 
                     matBadgeOverlap="false" 
                     style="cursor: pointer;"
-                    (click)="viewNotes()">{{applicant.surname}} </span> 
+                    (click)="viewNotes(applicant)">{{applicant.surname}} </span> 
                   <span *ngIf="applicant.noteNumber <= 0">{{applicant.surname}}</span>
                 </td>
               </ng-container>
