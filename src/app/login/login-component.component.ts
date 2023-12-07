@@ -13,10 +13,9 @@ export class LoginComponentComponent implements OnInit{
   constructor(private router: Router,private authService: AuthService) {}
 
   ngOnInit(): void {
-    console.log("here");
-  
     this.authService.setLoginStatus(false);
   }
+
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
@@ -43,7 +42,6 @@ export class LoginComponentComponent implements OnInit{
 
     }
   }
-
 
   @Output() submitEM = new EventEmitter();
 }
