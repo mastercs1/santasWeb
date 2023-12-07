@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Component, ErrorHandler, EventEmitter, Inject, Output } from '@angular/core';
 import {Dialog, DialogRef, DIALOG_DATA, DialogModule} from '@angular/cdk/dialog';
 import { DialogData } from 'src/app/interface/DialogData';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
@@ -35,9 +35,13 @@ export class NoteContentComponent {
     this.service.addNote(this.data.applicantId,this.textareaValue).subscribe({
       next:()=>{
         this.noteSaved.emit(this.data.noteNumber+1);
-      }
+      },
+      error:()=>{this.handlerError()}
     })
-    
     this.dialogRef.close();
+  }
+  
+  handlerError(){
+    console.log("error");
   }
 }
