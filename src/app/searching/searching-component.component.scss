@@ -3,3 +3,8 @@ mat-form-field {
     max-height: 90% ; /* Adjust this value as needed */
    
   }
+
+  .app-timepicker {
+    width: 100%; /* or any width that fills the parent */
+    height: 100%; /* or any height that fills the parent */
+  }
