@@ -8,7 +8,19 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    width: 10%;
+    width: 30%;
+    border-right: 1px solid #D7DBDD;
+    background-color: #8dc63f;
+    padding: 10px;
+}
+
+.smallSideBar {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 15%;
     border-right: 1px solid #D7DBDD;
     background-color: #8dc63f;
     padding: 10px;
