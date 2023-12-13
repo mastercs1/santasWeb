@@ -19,7 +19,7 @@ export class ApplicantsTableComponent implements OnInit{
   @Input() receivedSearchData: any;
   sub!: Subscription;
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['Reference','Surname','Givens','Dob','Course Code','Cycle','Action']
+  displayedColumns: string[] = ['Reference','Surname','Givens','Date of Birth','Email Address','Cycle','Status','Action']
 
 
  constructor(private searchingService :SearchingServiceService,private dialog: MatDialog){}

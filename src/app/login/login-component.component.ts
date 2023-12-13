@@ -30,9 +30,13 @@ export class LoginComponentComponent implements OnInit{
       if (usernameControl && passwordControl) {
         const usernameValue = usernameControl.value;
         const passwordValue = passwordControl.value;
-      if(usernameValue==='123' && passwordValue==='123'){
+      if(usernameValue==='yuxin tong' && passwordValue==='yuxintong'){
       
         this.authService.setLoginStatus(true);
+        localStorage.setItem('currentUser', JSON.stringify({
+          username: "yuxin tong",
+          password:"yuxintong"
+        }));
         this.router.navigate(['/searching']);
       }
       else{

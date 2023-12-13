@@ -44,9 +44,9 @@ export class SearchingComponentComponent implements OnInit{
       next: (cycles: any[]) => {
         const nameDescriptions: NameDescription[] = cycles.map((cycle: any) => {
           const nameDescription: NameDescription = {
-            name: cycle.cycleCode,
-            description: cycle.cycleName,
-            extra: cycle.cycleId
+            name: cycle.offerCycleCode,
+            description: cycle.offerCycleName,
+            extra: cycle.offerCycleId
           };
           return nameDescription;
         });

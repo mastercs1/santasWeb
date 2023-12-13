@@ -6,6 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import { MatInputModule } from '@angular/material/input';
 import { SearchingServiceService } from 'src/app/searching/searching-service.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-note-content',
@@ -32,11 +33,27 @@ export class NoteContentComponent {
 
   saveAndCloseDialog(): void {
     console.log('Textarea value:', this.textareaValue);
-    this.service.addNote(this.data.applicantId,this.textareaValue).subscribe({
+    let username = ''; 
+    const currentUserData = localStorage.getItem('currentUser');
+    
+    if (currentUserData !== null) {
+      const currentUser = JSON.parse(currentUserData);
+      username = currentUser.username;
+    }
+
+    this.service.addNote(this.data.applicantId,this.textareaValue,username).subscribe({
       next:()=>{
         this.noteSaved.emit(this.data.noteNumber+1);
       },
-      error:()=>{this.handlerError()}
+      error:(error)=>{
+        console.error('An error occurred:', error);
+        if (error instanceof HttpErrorResponse) {
+          console.error('Status:', error.status);
+          console.error('Response body:', error.error);
+        }
+      
+        this.handlerError()
+      }
     })
     this.dialogRef.close();
   }

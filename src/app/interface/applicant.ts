@@ -6,6 +6,7 @@ export interface Applicant {
     givens:string;
     reference:string;
     dob:Date;
-    courseCode: string;
-    cycle:Cycle
+    email: string;
+    cycle:Cycle;
+    status:string;
 }

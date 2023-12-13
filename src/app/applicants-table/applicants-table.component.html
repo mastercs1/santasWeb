@@ -47,17 +47,22 @@
 
               <ng-container matColumnDef={{displayedColumns[4]}}>
                 <th mat-header-cell *matHeaderCellDef >{{displayedColumns[4]}}</th>
-                <td mat-cell *matCellDef="let applicant">{{applicant.courseCode}}</td>
+                <td mat-cell *matCellDef="let applicant">{{applicant.email}}</td>
               </ng-container>  
        
               <ng-container matColumnDef={{displayedColumns[5]}}>
                 <th mat-header-cell *matHeaderCellDef >{{displayedColumns[5]}}</th>
                 <td mat-cell *matCellDef="let applicant">{{applicant.cycle}}</td>
               </ng-container>  
-       
+              
               <ng-container matColumnDef={{displayedColumns[6]}}>
+                <th mat-header-cell *matHeaderCellDef >{{displayedColumns[6]}}</th>
+                <td mat-cell *matCellDef="let applicant">{{applicant.status}}</td>
+              </ng-container>  
+       
+              <ng-container matColumnDef={{displayedColumns[7]}}>
                 <th mat-header-cell *matHeaderCellDef >
-                  {{displayedColumns[6]}}
+                  {{displayedColumns[7]}}
                 </th>
                 <td mat-cell *matCellDef="let applicant"> <app-note [applicant]="applicant" (currentNoteNumber)="notifyParent($event,applicant.applicantId)"> </app-note>
                  

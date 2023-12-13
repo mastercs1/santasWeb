@@ -16,9 +16,9 @@ export class SearchingServiceService implements OnInit {
   ngOnInit(): void {
     this.getCycles();
   }
-  private cycleUrl = 'http://localhost:8080/santasweb/cycles';
-  private applicantUrl = 'http://localhost:8080/santasweb/applicants';
-  private noteRul='http://localhost:8080/santasweb/note';
+  private cycleUrl = 'http://localhost:8089/santasweb/cycles';
+  private applicantUrl = 'http://localhost:8089/santasweb/applicants';
+  private noteRul='http://localhost:8089/santasweb/note';
   
   getCycles(): Observable<Cycle[]>{
     return this.http.get<Cycle[]>(this.cycleUrl).pipe(
@@ -60,17 +60,18 @@ export class SearchingServiceService implements OnInit {
    
    //post add note 
   
-  addNote (applicantId :number, note:string) :Observable <NoteResponse>{
+  addNote (applicantId :number, note:string,whoCreated:string) :Observable <any>{
     const getIndividualUrl = `${this.noteRul}/`+applicantId;
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'});
       let options = { headers: headers };
       const requestBody = {
         applicantId, 
-        note
+        note,
+        whoCreated
       };
   
-      return  this.http.post<NoteResponse>(getIndividualUrl,JSON.stringify(requestBody),options);
+      return  this.http.post<any>(getIndividualUrl,JSON.stringify(requestBody),options);
   }
   // get notes for an applicant 
   getNotes(applicantId:number): Observable<Note[]>{

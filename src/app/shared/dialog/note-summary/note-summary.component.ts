@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { NoteResponse } from 'src/app/interface/noteResponse';
 import { Note } from 'src/app/interface/note';
 export interface Card {
+  whoCreated:string
   subtitle: string;
   text: string;
 }
@@ -50,7 +51,7 @@ export class NoteSummaryComponent {
        // let count = 1; // Initialize count variable
         const cards: Card[] = notes.map((note: any) => {
           const card: Card = {
-            
+            whoCreated:note.whoCreated,
             subtitle: note.whenCreated,
             text: note.note.toString()
             
