@@ -4,12 +4,12 @@
 
   <form [formGroup]="form" (ngSubmit)="submit()" class="form">
     <div class="form-field">
-      <label for="username">Username</label>
+     
       <input type="text" id="username" name="username" placeholder="Username" formControlName="username">
     </div>
 
     <div class="form-field">
-      <label for="password">Password</label>
+     
       <input type="password" id="password" name="password" placeholder="Password" formControlName="password">
       <span class="error-message">{{ errorMessage }}</span>
     </div>

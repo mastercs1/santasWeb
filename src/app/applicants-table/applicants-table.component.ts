@@ -1,10 +1,12 @@
-import { Component, OnInit,Input,OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit,Input,OnChanges, SimpleChanges, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { SearchingServiceService } from '../searching/searching-service.service';
 import { Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { NoteSummaryComponent } from '../shared/dialog/note-summary/note-summary.component';
 import { Applicant } from '../interface/applicant';
+import { MatPaginator } from '@angular/material/paginator';
+
 
 
 @Component({
@@ -20,7 +22,20 @@ export class ApplicantsTableComponent implements OnInit{
   sub!: Subscription;
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['Reference','Surname','Givens','Date of Birth','Email Address','Cycle','Status','Action']
+  totalItems: number = 0; // inital number;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  offset =10;
+  pageNumber=1;
 
+
+  // ngAfterViewInit() {
+  //   if(this.dataSource !=null ){
+  //     this.dataSource.paginator = this.paginator;
+  //     console.warn("length=" + this.paginator.length);
+  //   }
+    
+ 
+  // }
 
  constructor(private searchingService :SearchingServiceService,private dialog: MatDialog){}
 
@@ -28,35 +43,51 @@ export class ApplicantsTableComponent implements OnInit{
     console.log('get from parent' + this.receivedSearchData);
   }
 
-
+  
+async fetch() :Promise<void>{
+  const dobValue = this.receivedSearchData?.dob|| '';
+  const surnameValue = this.receivedSearchData?.surname|| '';
+  const givensValue = this.receivedSearchData?.givens ||'';
+  const referenceValue = this.receivedSearchData?.reference||'';
+  const courseCodeValue = this.receivedSearchData?.courseCode||'';
+  const cycleValue = this.receivedSearchData?.cycle||'';
+ // this.dataSource.data=[];
+ let localData = [];
+  this.sub= this.searchingService.getApplicants(surnameValue,givensValue,referenceValue,dobValue,courseCodeValue,cycleValue,this.offset,this.pageNumber).subscribe({
+     next:response => {
+       console.log('data got from searching' + JSON.stringify(response))
+       localData = response.applicants; // Assign to the local variable
+    
+       this.fetchData(response.totalApplciants);
+       console.warn(response.totalApplciants);
+      
+       console.log(localData);
+       this.dataSource.data=localData;
+       console.log(this.dataSource.data);
+     
+     },
+     complete:()=>{
+       console.log("complete");
+     },
+     error: err => {
+       console.error('Error occurred:', err);
+       // Handle error scenario
+     }
+  })
+}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['receivedSearchData'] && changes['receivedSearchData'].currentValue) {
-       const dobValue = this.receivedSearchData?.dob|| '';
-       const surnameValue = this.receivedSearchData?.surname|| '';
-       const givensValue = this.receivedSearchData?.givens ||'';
-       const referenceValue = this.receivedSearchData?.reference||'';
-       const courseCodeValue = this.receivedSearchData?.courseCode||'';
-       const cycleValue = this.receivedSearchData?.cycle||'';
-      // this.dataSource.data=[];
-      let localData = [];
-       this.sub= this.searchingService.getApplicants(surnameValue,givensValue,referenceValue,dobValue,courseCodeValue,cycleValue).subscribe({
-          next:response => {
-            console.log('data got from searching' + JSON.stringify(response))
-            localData = response.applicants; // Assign to the local variable
-            console.log(localData);
-            this.dataSource.data=response.applicants;
-            console.log(this.dataSource.data);
-          
-          },
-          error: err => {
-            console.error('Error occurred:', err);
-            // Handle error scenario
-          }
-       })
-       
+      this.fetch();
     }
   }
+
+    // Fetch your data and set the totalItems when you have the count
+    fetchData(totalNumber:number) {
+      // Assume you get the total count of items from an API call or somewhere
+      this.totalItems = totalNumber; // Replace with your actual total count
+    }
+
   viewNotes(applicant:Applicant){
     const dialogRef = this.dialog.open(NoteSummaryComponent, {
       width: '500px',
@@ -64,12 +95,32 @@ export class ApplicantsTableComponent implements OnInit{
     });
   }
 
-  notifyParent(currentNoteNumber:number,applicantId:number){
-    const updatedData = this.dataSource.data.map((applicant: any)=>{
-     if(applicantId===applicant.applicantId){
-       applicant.noteNumber=currentNoteNumber; // update the note number and this is only number add not call service , when cilck on givens it will call note service to get notes
-     }
+  // notifyParent(currentNoteNumber:number,applicantId:number){
+  //   const updatedData = this.dataSource.data.map((applicant: any)=>{
+  //    if(applicantId===applicant.applicantId){
+  //      applicant.noteNumber=currentNoteNumber; // update the note number and this is only number add not call service , when cilck on givens it will call note service to get notes
+  //    }
+  //   });
+  //   console.log("get note numbner in table : " + currentNoteNumber);
+  // }
+
+
+  notifyParent(currentNoteNumber: number, applicantId: number): void {
+    this.dataSource.data = this.dataSource.data.map((applicant:any) => {
+      if (applicant.applicantId === applicantId) {
+        return { ...applicant, noteNumber: currentNoteNumber };
+      }
+      return applicant;
     });
-    console.log("get note numbner in table : " + currentNoteNumber);
+    console.log(`Got note number in table: ${currentNoteNumber}`);
   }
+
+
+  // Hook into page change event to handle pagination logic
+  onPageChange(event: any) {
+    this.pageNumber = event.pageIndex + 1; // Increment by 1 for next page
+    this.fetch();
+  }
+
+
 }

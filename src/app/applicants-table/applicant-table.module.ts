@@ -11,8 +11,9 @@ import { MatCardModule } from '@angular/material/card';
 import {Sort, MatSortModule} from '@angular/material/sort';
 import { ApplicantsTableComponent } from './applicants-table.component';
 import {NoteComponent} from '../shared/dialog/note/note.component'
+import { MatPaginatorModule } from '@angular/material/paginator';
 
-export const MATERIAL_MODULES = [MatFormFieldModule, MatInputModule, MatTableModule, MatButtonModule, MatCardModule,MatSortModule];
+export const MATERIAL_MODULES = [MatFormFieldModule, MatInputModule, MatTableModule, MatButtonModule, MatCardModule,MatSortModule,MatPaginatorModule];
 //define an array which include all modual from shared
 
 export const ANGULAR_MODULES: any[] = [CommonModule,RouterModule];

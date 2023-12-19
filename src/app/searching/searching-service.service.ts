@@ -33,11 +33,13 @@ export class SearchingServiceService implements OnInit {
 //todo add headeroption and send as jSON payload , backend need to define the payload json and change the methods. 
 //currently it is call the url but without the payload. 
    getApplicants(surname:string, 
-                 given:string,
+                 givens:string,
                  reference:string,
                  dob:string,
                  courseCode:string,
-                 cycle:string): Observable<ApplicantResponse>{
+                 cycle:string,
+                 offset:number,
+                 pageNumber: number): Observable<ApplicantResponse>{
     const getIndividualUrl = `${this.applicantUrl}`
    
     let headers = new HttpHeaders({
@@ -47,13 +49,16 @@ export class SearchingServiceService implements OnInit {
 
     const requestBody = {
       surname, 
-      given, 
+      givens, 
       reference,
       dob,
       courseCode,
-      cycle
+      cycle,
+      offset,
+      pageNumber
     };
 
+    console.log(requestBody);
     return  this.http.post<ApplicantResponse>(getIndividualUrl,JSON.stringify(requestBody),options);
   
    }
