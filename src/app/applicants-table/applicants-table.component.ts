@@ -58,8 +58,8 @@ async fetch() :Promise<void>{
        console.log('data got from searching' + JSON.stringify(response))
        localData = response.applicants; // Assign to the local variable
     
-       this.fetchData(response.totalApplciants);
-       console.warn(response.totalApplciants);
+       this.fetchData(response.totalApplicants);
+       console.warn(response.totalApplicants);
       
        console.log(localData);
        this.dataSource.data=localData;

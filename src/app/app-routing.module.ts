@@ -15,6 +15,9 @@ const routes: Routes = [
   { 
     path: 'searching',  loadChildren: () =>import('./searching/searching.module').then((m) => m.SearchingModule), 
   },
+  { 
+    path: 'applicants/:id',  loadChildren: () =>import('./applicants-details/applicant-details.module').then((m) => m.ApplicantDetailsModule), 
+  },
 
 
 ];
