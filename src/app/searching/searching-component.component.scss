@@ -8,3 +8,11 @@ mat-form-field {
     width: 100%; /* or any width that fills the parent */
     height: 100%; /* or any height that fills the parent */
   }
+
+  .align-center .mat-slide-toggle-content {
+    align-items: center;
+  }
+  
+  .align-text {
+    vertical-align: middle;
+  }

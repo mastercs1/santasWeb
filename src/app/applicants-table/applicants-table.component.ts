@@ -24,7 +24,7 @@ export class ApplicantsTableComponent implements OnInit{
   displayedColumns: string[] = ['Reference','Surname','Givens','Date of Birth','Email Address','Cycle','Status','Action']
   totalItems: number = 0; // inital number;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  offset =10;
+  offset =10
   pageNumber=1;
 
 
@@ -51,7 +51,7 @@ async fetch() :Promise<void>{
   const referenceValue = this.receivedSearchData?.reference||'';
   const courseCodeValue = this.receivedSearchData?.courseCode||'';
   const cycleValue = this.receivedSearchData?.cycle||'';
- // this.dataSource.data=[];
+ 
  let localData = [];
   this.sub= this.searchingService.getApplicants(surnameValue,givensValue,referenceValue,dobValue,courseCodeValue,cycleValue,this.offset,this.pageNumber).subscribe({
      next:response => {
@@ -119,8 +119,7 @@ async fetch() :Promise<void>{
   // Hook into page change event to handle pagination logic
   onPageChange(event: any) {
     this.pageNumber = event.pageIndex + 1; // Increment by 1 for next page
+    this.offset = event.pageSize;
     this.fetch();
   }
-
-
 }

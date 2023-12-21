@@ -1,13 +1,19 @@
+<mat-slide-toggle [(ngModel)]="isChecked" class="align-center">
+  <ng-container *ngIf="isChecked; else notChecked">
+    <span class="align-text">Searching Applicant</span>
+  </ng-container>
+  <ng-template #notChecked>
+    <span class="align-text">Searching Task Flows</span>
+  </ng-template>
+</mat-slide-toggle>
+
+
+
 <form [formGroup]="form" #formDirective="ngForm" class="flex flex-col gap-1 md:gap-4">
   
-  <div class="w-full flex justify-center">
-    <h2>Searching Applicant</h2>
-  </div>
-
-
   <mat-divider class="mt-4"></mat-divider>
 
-  <div class="mainBar flex justify-center">
+  <div class="mainBar flex justify-center" >
   <div class="container m-auto grid grid-cols-12 gap-4 gap-4">
     <div class="col-start-3 col-end-5">
       <mat-form-field appearance="fill">

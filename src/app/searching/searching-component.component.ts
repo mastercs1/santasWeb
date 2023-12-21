@@ -7,6 +7,7 @@ import {FilterValidators} from '../validators/FilterValidators'
 import {FormUtils} from '../utils/formUtils'
 import { Applicant } from '../interface/applicant';
 
+
 @Component({
   selector: 'app-searching-component',
   templateUrl: './searching-component.component.html',
@@ -15,11 +16,14 @@ import { Applicant } from '../interface/applicant';
 
 export class SearchingComponentComponent implements OnInit{
   form!: FormGroup;
-  
+  isChecked = true;
   applicants!: Applicant[];
   searchDataFromParent!:any;
+ 
+
 
   constructor(private service: SearchingServiceService, private datePipe:DatePipe) { 
+   
   }
 
 
