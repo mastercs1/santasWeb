@@ -1,8 +1,8 @@
 <div class="container">
 
     <div class="taskflow"> task flow section</div>
-    <mat-drawer-container class="mainboard" autosize>
-        <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
+   <mat-drawer-container class="mainboard" autosize>
+        <mat-drawer #drawer class="example-sidenav" mode="side" opened="true"> 
             <mat-toolbar class="toolbar">
                 <mat-icon>person</mat-icon>
                 {{applicantName}}
@@ -26,7 +26,7 @@
     
                 </mat-list-item>
                 <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails(' Application Details')"
+                    <button mat-raised-button (click)="emitPersonalDetails('Application Details')"
                         style="display: flex; align-items: center;">
                         <mat-icon style="margin-right: 5px;">person_pin</mat-icon>
                         Application Details
@@ -58,7 +58,7 @@
     
                 </mat-list-item>
                 <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails(' Correspondence')"
+                    <button mat-raised-button (click)="emitPersonalDetails('Correspondence')"
                         style="display: flex; align-items: center;">
                         <mat-icon style="margin-right: 5px;">mail</mat-icon>
                         Correspondence
@@ -66,7 +66,7 @@
     
                 </mat-list-item>
                 <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails(' History')"
+                    <button mat-raised-button (click)="emitPersonalDetails('History')"
                         style="display: flex; align-items: center;">
                         <mat-icon style="margin-right: 5px;">schedule</mat-icon>
                         History
@@ -75,7 +75,7 @@
                 </mat-list-item>
     
                 <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails(' Fee Details ')"
+                    <button mat-raised-button (click)="emitPersonalDetails('Fee Details')"
                         style="display: flex; align-items: center;">
                         <mat-icon style="margin-right: 5px;">attach_money</mat-icon>
                         Fee Details
@@ -83,15 +83,19 @@
     
                 </mat-list-item>
             </mat-list>
-        </mat-drawer>
+    </mat-drawer> 
     
         <div class="example-sidenav-content">
             <!-- <button type="button" mat-button (click)="drawer.toggle()">
             Toggle sidenav
-          </button>  -->
-            <div class="mainboard">{{message}}</div>
+          </button>   -->
+            <div class="mainboard">
+                <ng-container *ngIf="selectedComponent">
+                    <ng-container *ngComponentOutlet="selectedComponent"></ng-container>
+                </ng-container>
+            </div>
     
         </div>
     
     
-    </mat-drawer-container>
+     </mat-drawer-container> 
