@@ -1,19 +1,19 @@
-.container {
-    display: flex; /* Make the container a flex container */
+.mainpage{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
 }
-
 .sideBar {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    width: 30%;
     border-right: 1px solid #D7DBDD;
     background-color: #8dc63f;
     padding: 10px;
 }
-
 .smallSideBar {
     display: flex;
     min-height: 100vh;
@@ -44,7 +44,6 @@
     height: auto;
     max-width: 100%; /* Ensure the image doesn't exceed its container */
 }
-.mainBar {
-    flex: 1; /* Takes up remaining space */
-    /* Other styles */
+.mainBar{
+    flex:1
 }

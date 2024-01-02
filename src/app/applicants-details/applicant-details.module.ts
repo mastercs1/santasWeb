@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApplicantDetailsComponent } from './applicant-details.component';
 import { RouterModule } from '@angular/router';
-
+import {MatSidenavModule} from '@angular/material/sidenav'
+import {MatListModule} from '@angular/material/list'
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon'; 
 
 
 @NgModule({
@@ -11,6 +14,10 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatIconModule,
     RouterModule.forChild([
       {path:'',component:ApplicantDetailsComponent}
     ])

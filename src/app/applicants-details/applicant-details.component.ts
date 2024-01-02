@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,6 +6,18 @@ import { Component } from '@angular/core';
   templateUrl: './applicant-details.component.html',
   styleUrls: ['./applicant-details.component.scss']
 })
-export class ApplicantDetailsComponent {
+export class ApplicantDetailsComponent implements OnInit{
+  
+  showFiller = false;
+  applicantName="Yuxin Tong"
+  message='';
 
+  ngOnInit(): void {
+    
+  }
+  emitPersonalDetails(_message:string){
+    console.log(_message);
+
+    this.message=_message;
+  }
 }

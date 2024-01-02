@@ -1,11 +1,4 @@
-<mat-slide-toggle [(ngModel)]="isChecked" class="align-center">
-  <ng-container *ngIf="isChecked; else notChecked">
-    <span class="align-text">Searching Applicant</span>
-  </ng-container>
-  <ng-template #notChecked>
-    <span class="align-text">Searching Task Flows</span>
-  </ng-template>
-</mat-slide-toggle>
+
 
 
 
@@ -13,9 +6,10 @@
   
   <mat-divider class="mt-4"></mat-divider>
 
-  <div class="mainBar flex justify-center" >
-  <div class="container m-auto grid grid-cols-12 gap-4 gap-4">
-    <div class="col-start-3 col-end-5">
+  <div class="mainBar flex " >
+  <div class="container m-auto grid grid-cols-12 ">
+  
+    <div class="col-start-3 col-span-2 row-start-1">
       <mat-form-field appearance="fill">
         <mat-label>Surname</mat-label>
         <input matInput formControlName="surname">
@@ -25,7 +19,7 @@
       </mat-error> 
     </div>
 
-    <div class="col-start-6 col-span-2">
+    <div class="col-start-6 col-span-2 row-start-1">
       <mat-form-field appearance="fill">
         <mat-label>Given</mat-label>
         <input matInput formControlName="givens">
@@ -34,7 +28,13 @@
         only letter and * allowed and * cannot be the first place.
       </mat-error>
     </div>
-    <div class="col-start-9 col-span-2">
+
+    <div class="col-start-9 col-span-3 row-start-1">
+      <app-timepicker (dateSelected)="handleDateSelection($event)" date_label="Date of Birth"
+        [control]="$any(form).get('dob')" class="w-full h-full"></app-timepicker>
+    </div>
+
+     <div class="col-start-3 col-span-2 row-start-2">
       <mat-form-field appearance="fill" class="w-5/5">
         <mat-label>Reference</mat-label>
         <input matInput formControlName="reference">
@@ -42,20 +42,10 @@
           only number allowed and 9 digits required
         </mat-error>
       </mat-form-field>
-      <!-- <h1 class="tile-marker">TWO</h1> -->
-    </div>
-    <!--buton size is not changed before till add style inline .. -->
+    </div> 
 
 
-    <!--todo color need define in a interface or eunm for: 1 if nothing input then button is grey otherwsie it trun green -->
-
-
-    <div class="col-start-3 col-span-3">
-      <app-timepicker (dateSelected)="handleDateSelection($event)" date_label="Date of Birth"
-        [control]="$any(form).get('dob')"></app-timepicker>
-    </div>
-
-    <div class="col-start-6 col-span-2">
+    <div class="col-start-6 col-span-2 row-start-2">
       <mat-form-field appearance="fill">
         <mat-label>CourseCode</mat-label>
         <input matInput formControlName="courseCode">
@@ -63,18 +53,25 @@
       </mat-form-field>
     </div>
 
-    <div class="col-start-9 col-span-3" style="padding:0;">
-      <app-select label="Cycles" class="w-full" [control]="$any(form).get('cycle')"
+    <div class="col-start-9 col-span-3 row-start-2">
+      <app-select label="Cycles" class="w-full h-full" [control]="$any(form).get('cycle')"
         [items]="cycles"></app-select>
     </div>
-  </div>
 
-  <div class="col-start-10 ">
+    
+  <div class="col-start-6 col-span-2 row-start-3">
     <button class="h-full w-full" id="basic" type="button" mat-raised-button [disabled]="form.invalid"
-      style="height: 100%; width: 100%;" (click)="emitFormData()">
+      (click)="emitFormData()">
       Searching
     </button>
   </div>
+
+  </div>
+
+
+
+
+  
 </div>
   <mat-divider class="mt-2"></mat-divider>
 

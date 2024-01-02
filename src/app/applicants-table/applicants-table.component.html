@@ -1,17 +1,4 @@
 <mat-card class="example-card" *ngIf="dataSource?.data && dataSource.data.length > 0">
-    <mat-card-header>
-      
-      <mat-card-title>Applicants</mat-card-title>
-      <mat-card-subtitle ></mat-card-subtitle>
-    </mat-card-header>
-    
-     <!-- <mat-form-field>
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" #input>
-      </mat-form-field> -->
-
-      <!-- this is the shit  thing  #matSort matSort is working however matSort only is not working   -->
-     <mat-card-content >
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
             
            
@@ -73,5 +60,5 @@
             <tr mat-row *matRowDef="let applicant; columns: displayedColumns;"></tr> 
           </table>
           <mat-paginator [pageSizeOptions]="[10,20]"  [length]="totalItems" (page)="onPageChange($event)"></mat-paginator>
-    </mat-card-content>  
+
   </mat-card>

@@ -1,0 +1,394 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$mysatac-palette: (
+  50: #fefffc,
+  100: #f8fdf2,
+  200: #e9f5da,
+  300: #c8d3bb,
+  400: #c5dbac,
+  500: #b9d695,
+  600: #8dc63f,
+  700: #7cc90e,
+  800: #70a02e,
+  900: #5e8130,
+
+  contrast: (
+    900: #ffffff,
+    800: #ffffff,
+    700: #ffffff,
+    600: #9a4a4a,
+    500: #010101,
+    400: #a3a3a3,
+    300: #7a7a7a,
+    200: #656565,
+    100: #464646,
+    50: #252525,
+  ),
+);
+
+$tafesa-palette: (
+  50: #f5e1e4,
+  100: #f0aab2,
+  200: #ec939d,
+  300: #ea828e,
+  400: #ec6e7d,
+  500: #db4e5f,
+  600: #bd1427,
+  700: #be1428,
+  800: #750714,
+  900: #5c0711,
+
+  contrast: (
+    900: #ffffff,
+    800: #ffffff,
+    700: #ffffff,
+    600: #e1dcdc,
+    500: #010101,
+    400: #a3a3a3,
+    300: #7a7a7a,
+    200: #656565,
+    100: #464646,
+    50: #252525,
+  ),
+);
+
+$mysatac-toast-palette: (
+  success: (
+    bg: #8dc63f,
+    border: #c3e6cb,
+    text: #155724,
+  ),
+  error: (
+    bg: #e24545,
+    border: #f5c6cb,
+    text: #721c24,
+  ),
+  warning: (
+    bg: #e24545,
+    border: #ffeeba,
+    text: #856404,
+  ),
+  info: (
+    bg: #8dc63f,
+    border: #bee5eb,
+    text: #0c5460,
+  ),
+);
+
+$mysatac-alert-palette: (
+  success: (
+    bg: #d4edda,
+    border: #c3e6cb,
+    text: #155724,
+  ),
+  error: (
+    bg: #f8d7da,
+    border: #f5c6cb,
+    text: #721c24,
+  ),
+  warning: (
+    bg: #fff3cd,
+    border: #ffeeba,
+    text: #856404,
+  ),
+  info: (
+    bg: #d1ecf1,
+    border: #bee5eb,
+    text: #0c5460,
+  ),
+);
+
+$mysatac-palette-accent: (
+  50: #f4f4f4,
+  100: #efefef,
+  200: #e4e4e4,
+  300: #d3d3d3,
+  400: #aeaeae,
+  500: red,
+  //#353535,
+  600: #666666,
+  700: #535353,
+  800: blue,
+  900: pink,
+  contrast: (
+    900: #fbfbfb,
+    800: #f6f6f6,
+    700: #f1f1f1,
+    600: #e4e4e4,
+    500: #a3a3a3,
+    400: #a3a3a3,
+    300: #7a7a7a,
+    200: #656565,
+    100: #464646,
+    50: #252525,
+  ),
+);
+
+$black: black;
+$white: white;
+$satac-grey-lightest: #f2f2f2;
+$satac-grey-lighter: #dedede;
+$satac-grey-darkest: #767676;
+$satac-grey-body: #353535;
+$satac-grey-body: #353535;
+$satac-blue-grey: #f9fbfc;
+$satac-blue-light: #e9f2f6;
+
+$scrollbar-color: rgb(141, 198, 63);
+$scrollbar-background-color: rgba($scrollbar-color, 0.4);
+
+$blue: rgb(5, 5, 75);
+
+@mixin colour($theme) {
+  // Get the color config from the theme.
+  $color-config: mat.get-color-config($theme);
+
+  // Get the primary color palette from the color-config.
+  $primary-palette: map.get($color-config, "primary");
+  $warn-palette: map.get($color-config, "warn");
+
+  $foreground: map.get($color-config, foreground);
+
+  $disabled-color: mat.get-color-from-palette($foreground, icon);
+
+  $dark-link-color: mat.get-color-from-palette(
+    $primary-palette,
+    "900-contrast"
+  );
+
+  $color-contrast-500: mat.get-color-from-palette(
+    $primary-palette,
+    "500-contrast"
+  );
+
+  $color-600: mat.get-color-from-palette($primary-palette, 600);
+  $color-contrast-600: mat.get-color-from-palette(
+    $primary-palette,
+    "600-contrast"
+  );
+
+  $color-700: mat.get-color-from-palette($primary-palette, 700);
+  $color-900: mat.get-color-from-palette($primary-palette, 900);
+  $color-200: mat.get-color-from-palette($primary-palette, 200);
+  $color-100: mat.get-color-from-palette($primary-palette, 100);
+  $color-50: mat.get-color-from-palette($primary-palette, 50);
+
+  $medium-background-color: mat.get-color-from-palette($primary-palette, 300);
+  $medium-grey: mat.get-color-from-palette($primary-palette, "100-contrast");
+
+  $light-text-color: mat.get-color-from-palette(
+    $primary-palette,
+    "50-contrast"
+  );
+  $light-link-color: mat.get-color-from-palette(
+    $primary-palette,
+    "300-contrast"
+  );
+  $light-background-color: mat.get-color-from-palette($primary-palette, 50);
+
+  $warn-color: mat.get-color-from-palette($warn-palette);
+  $warn-color-hover: mat.get-color-from-palette($warn-palette, 300);
+
+  body {
+    background-color: $black;
+  }
+
+  .main-container .bg-t {
+    background-color: transparent;
+  }
+
+  .accept-reject-dialog-panel mat-dialog-container {
+    background-color: $light-background-color;
+  }
+
+  .disabled-color {
+    color: $disabled-color;
+  }
+
+  .disabled,
+  a.disabled {
+    @extend .disabled-color;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .light-bg {
+    background-color: $light-background-color;
+  }
+
+  .color-green-600 {
+    color: $color-600;
+  }
+
+  .color-green-900 {
+    color: $color-900;
+  }
+
+  .color-grey-darkest {
+    color: $satac-grey-darkest;
+  }
+
+  .dark-bg {
+    color: $color-contrast-600;
+    background-color: $color-600;
+
+    .link {
+      color: $color-contrast-600;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $light-link-color;
+      }
+    }
+  }
+
+  .bg-200 {
+    background-color: $color-200;
+  }
+
+  .bg-100 {
+    background-color: $color-100;
+  }
+
+  .bg-50 {
+    background-color: $color-50;
+  }
+
+  .bg-white {
+    background-color: white;
+  }
+
+  .bg-orange {
+    background-color: orange !important;
+    color: white;
+  }
+
+  .bg-green {
+    background-color: $color-700 !important;
+    color: white;
+  }
+
+  .color-black {
+    color: $black;
+  }
+
+  .bg-grey-lightest {
+    background-color: $satac-grey-lightest;
+  }
+
+  .light-color {
+    color: mat.get-color-from-palette($primary-palette, "500-contrast");
+  }
+
+  .bg-light-blue {
+    background-color: $satac-blue-light;
+  }
+
+  .link {
+    color: $light-text-color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $light-link-color;
+    }
+  }
+
+  .main-container {
+    color: $black;
+    background-color: $white;
+
+    mat-hint.mat-hint {
+      color: $black;
+    }
+
+    a:not(.disabled) {
+      @extend .link;
+    }
+
+    app-public-sidebar {
+      @extend .dark-bg;
+    }
+
+    app-user-sidebar,
+    .user-footer {
+      background-color: $satac-blue-grey;
+
+      a:not(.disabled) {
+        color: $black;
+
+        &:active,
+        &:focus {
+          color: $black;
+        }
+      }
+    }
+
+    app-public-sidebar,
+    app-mobile-footer {
+      @extend .dark-bg;
+    }
+
+    mat-error a:not(.disabled) {
+      color: $warn-color;
+      &:hover,
+      &:active,
+      &:focus {
+        color: $warn-color-hover;
+      }
+    }
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: white;
+  }
+
+  .user-drawer-container {
+    background-color: $satac-blue-grey;
+    a {
+      @extend .link;
+    }
+  }
+
+  .public-drawer-container,
+  .public-drawer-container mat-bottom-sheet-container,
+  app-mobile-public-drawer > div {
+    @extend .dark-bg;
+
+    a {
+      @extend .link;
+    }
+  }
+
+  .password-policy-overlay {
+    background-color: $light-background-color;
+    @include mat.elevation(8);
+  }
+
+  .data-table.course-pref-table {
+    td.mat-cell:first-of-type,
+    th.mat-header-cell:first-of-type {
+      border-right: solid 7px $light-background-color;
+    }
+  }
+
+  mat-expansion-panel-header.mat-expanded.bg-100:focus {
+    @extend .bg-100;
+  }
+  mat-expansion-panel-header.mat-expanded.bg-100:hover {
+    @extend .light-bg;
+  }
+
+  mat-accordion mat-expansion-panel.mat-expansion-panel {
+    @extend .bg-50;
+  }
+
+  .tippy-content {
+    @extend .bg-200;
+  }
+}
