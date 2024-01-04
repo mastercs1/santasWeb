@@ -6,6 +6,7 @@ import { ApplicantResponse }  from '../interface/ApplicantResponse'
 import { NoteResponse } from '../interface/noteResponse';
 import { Note } from '../interface/note';
 import { Address } from '../interface/address';
+import { AppDetails } from '../interface/app-details';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class SearchingServiceService implements OnInit {
   private applicantUrl = 'http://localhost:8089/santasweb/applicants';
   private noteRul='http://localhost:8089/santasweb/note';
   private addressRul='http://localhost:8089/santasweb/applicants/address';
+  private appdetailsRul='http://localhost:8089/santasweb/applicants/details';
  
   
   getCycles(): Observable<Cycle[]>{
@@ -95,5 +97,10 @@ export class SearchingServiceService implements OnInit {
   getAddress(ref:string): Observable<Address[]>{
     const getIndividualUrl = `${this.addressRul}/`+ref;
     return this.http.get<Address[]>(getIndividualUrl);
+  } 
+
+  getAppDetails(ref:string): Observable<AppDetails>{
+    const getIndividualUrl = `${this.appdetailsRul}/`+ref;
+    return this.http.get<AppDetails>(getIndividualUrl);
   } 
 }

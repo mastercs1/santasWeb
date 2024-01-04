@@ -5,6 +5,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatTabChangeEvent, MatTabsModule } from '@angular/material/tabs';
 import { Address } from 'src/app/interface/address';
+import { AppDetails } from 'src/app/interface/app-details';
 import { identification } from 'src/app/interface/identification';
 import { SearchingServiceService } from 'src/app/searching/searching-service.service';
 
@@ -34,7 +35,16 @@ export class IdentifyComponent {
   };
    postAddress:Address | undefined;
    permanentAddress:Address| undefined;
-
+   appDetails: AppDetails ={
+     aboriginal: '',
+     residency: '',
+     filingNumber: '',
+     applicantType: '',
+     formerNames: '',
+     dateStarted: '',
+     dateSubmitted: '',
+     applicantEligibility: ''
+   };
   
   constructor(private service: SearchingServiceService) {}
 
@@ -71,8 +81,18 @@ export class IdentifyComponent {
         });
       }
     }
-    if(tab==="Identification Details"){
-      console.log("Identification Details clicked");
+    if(tab==="Application Details"){
+      this.applicantRef=localStorage.getItem('applicantRef');
+      if(this.applicantRef){
+        this.service.getAppDetails(this.applicantRef).subscribe({
+          next:(response:AppDetails)=>{
+            if(response){
+              this.appDetails = response;
+            }
+          }
+
+        });
+      }
     }
   }
 }
