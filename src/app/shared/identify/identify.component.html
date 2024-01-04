@@ -1,5 +1,5 @@
 <div class="identify-card">
-    <mat-tab-group animationDuration="700ms">
+    <mat-tab-group animationDuration="700ms" (selectedTabChange)="onChange($event)">
         <mat-tab label="Identification Details">
             <mat-list class="list">
                 <mat-list-item>
@@ -62,68 +62,68 @@
             <mat-tab label="Contact Details">
                 <div class="row-content">
                     <div class="address">
-                        <h2>Postal Address </h2>
+                        <h2>{{postAddress?.addressType}} Address </h2>
                         <mat-list class="list">
                             <mat-list-item>
                                 <span matListItemTitle>Address Line 1</span>
-                                <span matListItemLine>6 Petersens Parade</span>
+                                <span matListItemLine>{{postAddress?.addressLine1}}</span>
                             </mat-list-item>
                             <mat-list-item>
                                 <span matListItemTitle>Address Line 2</span>
-                                <span matListItemLine></span>
+                                <span matListItemLine>{{postAddress?.addressLine2}}</span>
                             </mat-list-item>
                             <mat-list-item>
                                 <span matListItemTitle>Suburb or town</span>
-                                <span matListItemLine>Salisbury Downs</span>
+                                <span matListItemLine>{{postAddress?.suburb}}</span>
                             </mat-list-item>
             
                             <mat-list-item>
                                 <span matListItemTitle>State</span>
-                                <span matListItemLine>SA</span>
+                                <span matListItemLine>{{postAddress?.state}}</span>
                             </mat-list-item>
             
                             <mat-list-item>
                                 <span matListItemTitle>Postcode</span>
-                                <span matListItemLine>5108</span>
+                                <span matListItemLine>{{postAddress?.postCode}}</span>
                             </mat-list-item>
             
                             <mat-list-item>
                                 <span matListItemTitle>Country</span>
-                                <span matListItemLine>Australia</span>
+                                <span matListItemLine>{{postAddress?.country}}</span>
                             </mat-list-item>
             
                             
                         </mat-list>
                     </div>
                     <div class="address">
-                        <h2>Permanent Address</h2>
+                        <h2>{{permanentAddress?.addressType}} Address</h2>
                         <mat-list class="list" >
                             <mat-list-item>
                                 <span matListItemTitle>Address Line 1</span>
-                                <span matListItemLine>6 Petersens Parade</span>
+                                <span matListItemLine>{{permanentAddress?.addressLine1}}</span>
                             </mat-list-item>
                             <mat-list-item>
                                 <span matListItemTitle>Address Line 2</span>
-                                <span matListItemLine></span>
+                                <span matListItemLine>{{permanentAddress?.addressLine2}}</span>
                             </mat-list-item>
                             <mat-list-item>
                                 <span matListItemTitle>Suburb or town</span>
-                                <span matListItemLine>Salisbury Downs</span>
+                                <span matListItemLine>{{permanentAddress?.suburb}}</span>
                             </mat-list-item>
             
                             <mat-list-item>
                                 <span matListItemTitle>State</span>
-                                <span matListItemLine>SA</span>
+                                <span matListItemLine>{{permanentAddress?.state}}</span>
                             </mat-list-item>
             
                             <mat-list-item>
                                 <span matListItemTitle>Postcode</span>
-                                <span matListItemLine>5108</span>
+                                <span matListItemLine>{{permanentAddress?.postCode}}</span>
                             </mat-list-item>
             
                             <mat-list-item>
                                 <span matListItemTitle>Country</span>
-                                <span matListItemLine>Australia</span>
+                                <span matListItemLine>{{permanentAddress?.country}}</span>
                             </mat-list-item>
             
                             

@@ -3,7 +3,8 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatTabChangeEvent, MatTabsModule } from '@angular/material/tabs';
+import { Address } from 'src/app/interface/address';
 import { identification } from 'src/app/interface/identification';
 import { SearchingServiceService } from 'src/app/searching/searching-service.service';
 
@@ -31,6 +32,10 @@ export class IdentifyComponent {
     reference: '',
     workPhone: '',
   };
+   postAddress:Address | undefined;
+   permanentAddress:Address| undefined;
+
+  
   constructor(private service: SearchingServiceService) {}
 
   ngOnInit() {
@@ -43,6 +48,31 @@ export class IdentifyComponent {
           }
         },
       });
+    }
+  }
+  onChange(event:MatTabChangeEvent){
+    const tab = event.tab.textLabel;
+    if(tab==="Contact Details"){
+      this.applicantRef = localStorage.getItem('applicantRef');
+      if (this.applicantRef) {
+        this.service.getAddress(this.applicantRef).subscribe({
+          next: (response: Address[]) => {
+            if (response) {
+              response.map((add: Address)=>{
+               if(add.addressType==='Postal'){
+                  this.postAddress=add;
+               }
+               if(add.addressType==='Permanent'){
+                  this.permanentAddress=add;
+               }
+              });
+            }
+          },
+        });
+      }
+    }
+    if(tab==="Identification Details"){
+      console.log("Identification Details clicked");
     }
   }
 }
