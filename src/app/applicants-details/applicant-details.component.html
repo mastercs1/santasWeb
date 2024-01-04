@@ -1,101 +1,76 @@
-<div class="container">
+<div class ="container">
+    <mat-toolbar class="toolbar">
+        <mat-icon>person</mat-icon>
+        {{applicantRef}}
+    </mat-toolbar>
+  <div class="mainbar">
+    <div class="menu">
+        <mat-list role="list"  class="menu-list">
+            <mat-list-item role="listitem">
+                <button mat-raised-button (click)="emitPersonalDetails('Application Details')"
+                    style="display: flex; align-items: center;">
+                    <mat-icon style="margin-right: 5px;">person_pin</mat-icon>
+                    Application Details
+                </button>
+    
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button mat-raised-button (click)="emitPersonalDetails('Applicant Notes')"
+                    style="display: flex; align-items: center;">
+                    <mat-icon style="margin-right: 5px;">edit_note</mat-icon>
+                    Applicant Notes
+                </button>
+    
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button mat-raised-button (click)="emitPersonalDetails('Preferences')"
+                    style="display: flex; align-items: center;">
+                    <mat-icon style="margin-right: 5px;">list</mat-icon>
+                    Preferences
+                </button>
+    
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button mat-raised-button (click)="emitPersonalDetails('Qualifications')"
+                    style="display: flex; align-items: center;">
+                    <mat-icon style="margin-right: 5px;">school</mat-icon>
+                    Qualifications
+                </button>
+    
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button mat-raised-button (click)="emitPersonalDetails('Correspondence')"
+                    style="display: flex; align-items: center;">
+                    <mat-icon style="margin-right: 5px;">mail</mat-icon>
+                    Correspondence
+                </button>
+    
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <button mat-raised-button (click)="emitPersonalDetails('History')"
+                    style="display: flex; align-items: center;">
+                    <mat-icon style="margin-right: 5px;">schedule</mat-icon>
+                    History
+                </button>
+    
+            </mat-list-item>
+    
+            <mat-list-item role="listitem">
+                <button mat-raised-button (click)="emitPersonalDetails('Fee Details')"
+                    style="display: flex; align-items: center;">
+                    <mat-icon style="margin-right: 5px;">attach_money</mat-icon>
+                    Fee Details
+                </button>
+    
+            </mat-list-item>
+        </mat-list>
 
-    <div class="taskflow"> task flow section</div>
-   <mat-drawer-container class="mainboard" autosize>
-        <mat-drawer #drawer class="example-sidenav" mode="side" opened="true"> 
-            <mat-toolbar class="toolbar">
-                <mat-icon>person</mat-icon>
-                {{applicantName}}
-            </mat-toolbar>
-            <mat-list role="list">
-                <mat-list-item role="listitem">
-    
-                    <button mat-raised-button (click)="emitPersonalDetails('Identification Details')"
-                        style="display: flex; align-items: center;">
-                        <mat-icon style="margin-right: 5px;">badge</mat-icon>
-                        Identification Details
-                    </button>
-    
-                </mat-list-item>
-                <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails('Contact Details')"
-                        style="display: flex; align-items: center;">
-                        <mat-icon style="margin-right: 5px;">call</mat-icon>
-                        Contact Details
-                    </button>
-    
-                </mat-list-item>
-                <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails('Application Details')"
-                        style="display: flex; align-items: center;">
-                        <mat-icon style="margin-right: 5px;">person_pin</mat-icon>
-                        Application Details
-                    </button>
-    
-                </mat-list-item>
-                <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails('Applicant Notes')"
-                        style="display: flex; align-items: center;">
-                        <mat-icon style="margin-right: 5px;">edit_note</mat-icon>
-                        Applicant Notes
-                    </button>
-    
-                </mat-list-item>
-                <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails('Preferences')"
-                        style="display: flex; align-items: center;">
-                        <mat-icon style="margin-right: 5px;">list</mat-icon>
-                        Preferences
-                    </button>
-    
-                </mat-list-item>
-                <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails('Qualifications')"
-                        style="display: flex; align-items: center;">
-                        <mat-icon style="margin-right: 5px;">school</mat-icon>
-                        Qualifications
-                    </button>
-    
-                </mat-list-item>
-                <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails('Correspondence')"
-                        style="display: flex; align-items: center;">
-                        <mat-icon style="margin-right: 5px;">mail</mat-icon>
-                        Correspondence
-                    </button>
-    
-                </mat-list-item>
-                <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails('History')"
-                        style="display: flex; align-items: center;">
-                        <mat-icon style="margin-right: 5px;">schedule</mat-icon>
-                        History
-                    </button>
-    
-                </mat-list-item>
-    
-                <mat-list-item role="listitem">
-                    <button mat-raised-button (click)="emitPersonalDetails('Fee Details')"
-                        style="display: flex; align-items: center;">
-                        <mat-icon style="margin-right: 5px;">attach_money</mat-icon>
-                        Fee Details
-                    </button>
-    
-                </mat-list-item>
-            </mat-list>
-    </mat-drawer> 
-    
-        <div class="example-sidenav-content">
-            <!-- <button type="button" mat-button (click)="drawer.toggle()">
-            Toggle sidenav
-          </button>   -->
-            <div class="mainboard">
-                <ng-container *ngIf="selectedComponent">
-                    <ng-container *ngComponentOutlet="selectedComponent"></ng-container>
-                </ng-container>
-            </div>
-    
-        </div>
-    
-    
-     </mat-drawer-container> 
+    </div>
+      
+      <div class="content">
+        <ng-container *ngIf="selectedComponent" class="mainboardcontent">
+            <ng-container *ngComponentOutlet="selectedComponent" ></ng-container>
+        </ng-container>
+      </div>
+  </div>
+</div>

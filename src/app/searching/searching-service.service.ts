@@ -19,6 +19,7 @@ export class SearchingServiceService implements OnInit {
   private cycleUrl = 'http://localhost:8089/santasweb/cycles';
   private applicantUrl = 'http://localhost:8089/santasweb/applicants';
   private noteRul='http://localhost:8089/santasweb/note';
+ 
   
   getCycles(): Observable<Cycle[]>{
     return this.http.get<Cycle[]>(this.cycleUrl).pipe(
@@ -82,5 +83,10 @@ export class SearchingServiceService implements OnInit {
   getNotes(applicantId:number): Observable<Note[]>{
     const getIndividualUrl = `${this.noteRul}/`+applicantId;
     return this.http.get<Note[]>(getIndividualUrl);
+  } 
+
+  getIdentification(ref:string): Observable<any[]>{
+    const getIndividualUrl = `${this.applicantUrl}/`+ref;
+    return this.http.get<any[]>(getIndividualUrl);
   } 
 }

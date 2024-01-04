@@ -5,6 +5,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import {MatListModule} from '@angular/material/list'
+import {MatIconModule} from '@angular/material/icon'; 
+import { IdentifyComponent } from '../shared/identify/identify.component';
 MatInputModule
 @NgModule({
   declarations: [NavbarComponent],
@@ -13,7 +16,10 @@ MatInputModule
     MatToolbarModule,
     RouterModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule,
+    MatIconModule,
+    IdentifyComponent
     
   ],
   exports:[

@@ -1,0 +1,29 @@
+.identify-card{
+ //background-color: brown;
+ width: 100%;
+ height: 100%;
+}
+.list{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Apply flex to the elements inside each tab content */
+.row-content {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+   
+    /* Add other necessary styles */
+}
+.row-content div{
+    flex-grow: 1;
+    align-content: space-around;
+}
+.address{
+    display:flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+}

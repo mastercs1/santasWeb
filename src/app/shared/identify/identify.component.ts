@@ -1,10 +1,48 @@
-import { Component } from '@angular/core';
+import { InputModalityDetector } from '@angular/cdk/a11y';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { identification } from 'src/app/interface/identification';
+import { SearchingServiceService } from 'src/app/searching/searching-service.service';
 
 @Component({
   selector: 'app-identify',
   templateUrl: './identify.component.html',
-  styleUrls: ['./identify.component.scss']
+  styleUrls: ['./identify.component.scss'],
+  imports: [MatCardModule, MatDividerModule, MatListModule, MatTabsModule],
+  standalone: true,
 })
 export class IdentifyComponent {
+  applicantRef: string | null = null;
+  localData: string | undefined;
+  identification: identification = {
+    applicantEligibility: '',
+    applicantEligibilityHowDerived: '',
+    applicationStaus: '',
+    citizenship: '',
+    cycle: '',
+    dataOfBirth: '',
+    emailAddress: '',
+    mobile: '',
+    name: '',
+    personStatus: '',
+    reference: '',
+    workPhone: '',
+  };
+  constructor(private service: SearchingServiceService) {}
 
+  ngOnInit() {
+    this.applicantRef = localStorage.getItem('applicantRef');
+    if (this.applicantRef) {
+      this.service.getIdentification(this.applicantRef).subscribe({
+        next: (response: any) => {
+          if (response) {
+            this.identification = response;
+          }
+        },
+      });
+    }
+  }
 }

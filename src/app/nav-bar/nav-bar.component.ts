@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { AuthService } from '../service/auth.service';
+import { IdentifyComponent } from '../shared/identify/identify.component';
 
 @Component({
   selector: 'app-navbar',
@@ -23,5 +24,6 @@ export class NavbarComponent implements OnInit{
       console.log("isLoggedIn =" + isLoggedIn);
     });
   }
+
 
 }
