@@ -91,21 +91,11 @@ async fetch() :Promise<void>{
   viewNotes(applicant:Applicant){
     const dialogRef = this.dialog.open(NoteSummaryComponent, {
       width: '500px',
-      data: {surname: applicant.surname, givens: applicant.givens , applicantId:applicant.applicantId} // Pass applicant data to ViewNotesComponent if needed
+      data: {surname: applicant.surname, givens: applicant.givens , applicantId:applicant.applicantId,test:'123331'} // Pass applicant data to ViewNotesComponent if needed
     });
   }
 
-  // notifyParent(currentNoteNumber:number,applicantId:number){
-  //   const updatedData = this.dataSource.data.map((applicant: any)=>{
-  //    if(applicantId===applicant.applicantId){
-  //      applicant.noteNumber=currentNoteNumber; // update the note number and this is only number add not call service , when cilck on givens it will call note service to get notes
-  //    }
-  //   });
-  //   console.log("get note numbner in table : " + currentNoteNumber);
-  // }
-
-
-  notifyParent(currentNoteNumber: number, applicantId: number): void {
+  notifyParent(currentNoteNumber: number, applicantId: string): void {
     this.dataSource.data = this.dataSource.data.map((applicant:any) => {
       if (applicant.applicantId === applicantId) {
         return { ...applicant, noteNumber: currentNoteNumber };

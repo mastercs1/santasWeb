@@ -2,11 +2,11 @@ import { Injectable , OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject, catchError, tap ,throwError} from "rxjs";
 import { Cycle } from '../interface/cycle';
-import { ApplicantResponse }  from '../interface/ApplicantResponse'
 import { NoteResponse } from '../interface/noteResponse';
 import { Note } from '../interface/note';
 import { Address } from '../interface/address';
 import { AppDetails } from '../interface/app-details';
+import { ApplicantResponse } from '../interface/applicantResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -70,7 +70,7 @@ export class SearchingServiceService implements OnInit {
    
    //post add note 
   
-  addNote (applicantId :number, note:string,whoCreated:string) :Observable <any>{
+  addNote (applicantId :string, note:string,whoCreated:string) :Observable <any>{
     const getIndividualUrl = `${this.noteRul}/`+applicantId;
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'});
@@ -84,7 +84,7 @@ export class SearchingServiceService implements OnInit {
       return  this.http.post<any>(getIndividualUrl,JSON.stringify(requestBody),options);
   }
   // get notes for an applicant 
-  getNotes(applicantId:number): Observable<Note[]>{
+  getNotes(applicantId:string): Observable<Note[]>{
     const getIndividualUrl = `${this.noteRul}/`+applicantId;
     return this.http.get<Note[]>(getIndividualUrl);
   } 

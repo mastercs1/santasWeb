@@ -1,5 +1,5 @@
 export interface Note{
     noteId:number,
-    applicantId:number,
+    applicantId:string,
     note:string,
 }

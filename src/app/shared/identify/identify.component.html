@@ -57,9 +57,10 @@
                     <span matListItemTitle>Citizenship Response</span>
                     <span matListItemLine>{{identification.citizenship}}</span>
                 </mat-list-item>
-            </mat-list></mat-tab>
+            </mat-list>
+        </mat-tab>
             
-            <mat-tab label="Contact Details">
+         <mat-tab label="Contact Details">
                 <div class="row-content">
                     <div class="address">
                         <h2>{{postAddress?.addressType}} Address </h2>
@@ -125,8 +126,6 @@
                                 <span matListItemTitle>Country</span>
                                 <span matListItemLine>{{permanentAddress?.country}}</span>
                             </mat-list-item>
-            
-                            
                         </mat-list>
                     </div>
                 </div>
@@ -167,8 +166,6 @@
                     <span matListItemTitle>Date submitted</span>
                     <span matListItemLine>{{appDetails.dateSubmitted}}</span>
                 </mat-list-item>
-
-
                 <mat-list-item>
                     <span matListItemTitle>Applicant Eligibility</span>
                     <span matListItemLine>{{appDetails.applicantEligibility}}</span>
@@ -176,8 +173,30 @@
             </mat-list>
 
         </mat-tab>
+
+        <mat-tab label="Application Notes">
+            <mat-list class="notelist" *ngFor="let item of DATA" style="border: 1em;">
+
+                <mat-card class="card">
+                    <mat-card-header><mat-icon style="margin-right: 5px;">edit_note</mat-icon>{{item.whoCreated}}</mat-card-header>
+                    <mat-card-subtitle>{{item.subtitle}}</mat-card-subtitle>
+                    <mat-card-content>{{item.text}}</mat-card-content>
+                </mat-card>
+                <!-- <mat-list-item >
+                    <span matListItemTitle>Who Created</span>
+                    <span matListItemLine>{{item.whoCreated}}</span>
+                </mat-list-item>
+                <mat-list-item >
+                    <span matListItemTitle>When Created</span>
+                    <span matListItemLine>{{item.subtitle}}</span>
+                </mat-list-item>
+                <mat-list-item >
+                    <span matListItemTitle>Note</span>
+                    <span >{{item.text}}</span>
+                </mat-list-item> -->
+
+
+            </mat-list>
+        </mat-tab>
     </mat-tab-group>
-
-
-
 </div>

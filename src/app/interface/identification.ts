@@ -11,4 +11,5 @@ export interface identification{
     personStatus:string;
     reference: string;
     workPhone: string;
+    applicantId:string;
 }

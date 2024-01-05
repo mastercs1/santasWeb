@@ -43,4 +43,11 @@ export class ApplicantDetailsComponent implements OnInit{
     }
 }
  
+panel1Opened = false;
+
+togglePanel1() {
+  this.panel1Opened = !this.panel1Opened;
+}
+
+
 }
