@@ -15,7 +15,7 @@ export class ApplicantDetailsComponent implements OnInit{
   showFiller = false;
   message='';
   selectedComponent:any;
-  
+  preferencesList: number[] = []; 
   applicantRef:any;
   customInjector: any;
 
@@ -24,6 +24,7 @@ export class ApplicantDetailsComponent implements OnInit{
       this.applicantRef = params['id']; // 'id' should match the parameter name in the route
       localStorage.setItem('applicantRef', this.applicantRef);
     });
+    this.preferencesList=[1,2,3];
   }
   ngOnInit(): void {
     
