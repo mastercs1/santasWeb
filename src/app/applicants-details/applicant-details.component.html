@@ -1,7 +1,7 @@
 <div class ="container">
     <mat-toolbar class="toolbar">
         <mat-icon>person</mat-icon>
-        {{applicantRef}}
+        {{username}}
     </mat-toolbar>
   <div class="mainbar">
     <div class="menu">
@@ -15,15 +15,8 @@
     
             </mat-list-item>
 
-            <!-- <mat-list-item role="listitem" class="preference">
-                <button mat-raised-button (click)="emitPersonalDetails('Preferences')"
-                    style="display: flex; align-items: center;">
-                    <mat-icon style="margin-right: 5px;">list</mat-icon>
-                    Preferences
-                </button>  -->
-             
-                 <mat-expansion-panel>
-                    <mat-expansion-panel-header>
+                 <mat-expansion-panel >
+                    <mat-expansion-panel-header >
                       <mat-panel-title>
                         <button mat-button (click)="togglePanel1()"   style="display: flex; align-items: center;">
                           <mat-icon style="margin-right: 5px;">list</mat-icon>
@@ -33,28 +26,14 @@
                     </mat-expansion-panel-header>
                     <div *ngIf="panel1Opened" class="preference-buttons">
                         <button mat-button *ngFor="let preference of preferencesList" 
-                        (click)="emitPersonalDetails('Qualifications')">
-                  Preference {{ preference }}
+                        (click)="emitPreferenceDetails(preference.preferenceId)"
+                        [class.active]="preference.preferenceId === selectedPreferenceId"> <!--add dynamic background.-->
+                      <div [ngStyle]="{ 'color': preference.hasOffer ? '#FFB037' : '' }" > 
+                     
+                          Preference {{ preference.preferenceNumber }}
+                    </div>
                    </button>
-                      <!-- <button mat-button (click)="emitPersonalDetails('Preferences 1')">
-                        Preferences 1
-                      </button>
-                      <button mat-button (click)="emitPersonalDetails('Preferences 2')">
-                        Preferences 2
-                      </button>
-                      <button mat-button (click)="emitPersonalDetails('Preferences 3')">
-                        Preferences 3
-                      </button>
-                      <button mat-button (click)="emitPersonalDetails('Preferences 4')">
-                        Preferences 4
-                      </button>
-                      <button mat-button (click)="emitPersonalDetails('Preferences 5')">
-                        Preferences 5
-                      </button>
-                      <button mat-button (click)="emitPersonalDetails('Preferences 6')">
-                        Preferences 6
-                      </button>
-               -->
+     
                     </div>
                   </mat-expansion-panel> 
             

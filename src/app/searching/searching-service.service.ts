@@ -7,6 +7,7 @@ import { Note } from '../interface/note';
 import { Address } from '../interface/address';
 import { AppDetails } from '../interface/app-details';
 import { ApplicantResponse } from '../interface/applicantResponse';
+import { Preference } from '../interface/preference';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,7 @@ export class SearchingServiceService implements OnInit {
   private noteRul='http://localhost:8089/santasweb/note';
   private addressRul='http://localhost:8089/santasweb/applicants/address';
   private appdetailsRul='http://localhost:8089/santasweb/applicants/details';
+  private preferenceUrl='http://localhost:8089/santasweb/applicant/preference';
  
   
   getCycles(): Observable<Cycle[]>{
@@ -89,18 +91,23 @@ export class SearchingServiceService implements OnInit {
     return this.http.get<Note[]>(getIndividualUrl);
   } 
 
-  getIdentification(ref:string): Observable<any[]>{
-    const getIndividualUrl = `${this.applicantUrl}/`+ref;
+  getIdentification(applicantId:string): Observable<any[]>{
+    const getIndividualUrl = `${this.applicantUrl}/`+applicantId;
     return this.http.get<any[]>(getIndividualUrl);
   } 
 
-  getAddress(ref:string): Observable<Address[]>{
-    const getIndividualUrl = `${this.addressRul}/`+ref;
+  getAddress(applicantId:string): Observable<Address[]>{
+    const getIndividualUrl = `${this.addressRul}/`+applicantId;
     return this.http.get<Address[]>(getIndividualUrl);
   } 
 
-  getAppDetails(ref:string): Observable<AppDetails>{
-    const getIndividualUrl = `${this.appdetailsRul}/`+ref;
+  getAppDetails(applicantId:string): Observable<AppDetails>{
+    const getIndividualUrl = `${this.appdetailsRul}/`+applicantId;
     return this.http.get<AppDetails>(getIndividualUrl);
   } 
+
+  getPreference(applicantId:string): Observable<Preference[]>{
+    const getIndividualUrl = `${this.preferenceUrl}/`+applicantId;
+    return this.http.get<Preference[]>(getIndividualUrl);
+  }
 }

@@ -34,7 +34,9 @@
  // background-color: #e1eaf0; /* Change button color on hover */
   color: #8dc63f /* Change text color on hover */
 }
-
+.menu button.active {
+    background-color: #e40c0c; /* Background color when item is active */
+  }
 .preference{
     display:flex;
     flex-direction: column;

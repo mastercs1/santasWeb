@@ -1,0 +1,108 @@
+<div class="identify-card" >
+    <mat-tab-group animationDuration="700ms" (selectedTabChange)="onChange($event)" [selectedIndex]="0">
+        <mat-tab label="Preference Details">
+            <mat-list class="list">
+                <mat-list-item>
+                    <span matListItemTitle>Preference Eligibility</span>
+                    <span matListItemLine>{{preferenceDetails?.preferenceEligibility}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Preference Eligibility How Derived</span>
+                    <span matListItemLine>{{preferenceDetails?.preferenceEligibilityHowDerived}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Offer Status</span>
+                    <span matListItemLine>{{preferenceDetails?.offerStatus}}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span matListItemTitle>Offer Date</span>
+                    <span matListItemLine>{{preferenceDetails?.offerDate}}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span matListItemTitle>Responded</span>
+                    <span matListItemLine>{{preferenceDetails?.responded}}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span matListItemTitle>Response Date</span>
+                    <span matListItemLine>{{preferenceDetails?.responseDate}}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span matListItemTitle>Preference Date Created</span>
+                    <span matListItemLine>{{preferenceDetails?.preferenceDateCreated}}</span>
+                </mat-list-item>
+            </mat-list>
+        </mat-tab>
+            
+      
+            
+        <mat-tab label="Overall Deemed Status">
+            <mat-list class="list">
+                <mat-list-item>
+                    <span matListItemTitle>Basis for Admission</span>
+                    <span matListItemLine>{{overallDeem?.basisForAdmission}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Deemed Value</span>
+                    <span matListItemLine>{{overallDeem?.deemedValue}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Why Deemed</span>
+                    <span matListItemLine>{{overallDeem?.whyDeemed}}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span matListItemTitle>Why Undeemed</span>
+                    <span matListItemLine>{{overallDeem?.whyUndeemed}}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span matListItemTitle>Who</span>
+                    <span matListItemLine>{{overallDeem?.who}}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span matListItemTitle>When</span>
+                    <span matListItemLine>{{overallDeem?.when}}</span>
+                </mat-list-item>
+                
+              <mat-list-item>
+                <button mat-raised-button style="background-color: aqua;"> 
+                    <ng-container *ngIf="overallDeem?.deemedValue!=''" >Undeem Preference </ng-container>
+                    <ng-container *ngIf="overallDeem?.deemedValue=='' ">deem Preference </ng-container>
+                 
+                </button>
+            </mat-list-item>
+            </mat-list>
+            
+        </mat-tab>
+
+        <mat-tab label="Eligibility">
+            <mat-list class="notelist"  >
+
+
+            </mat-list>
+        </mat-tab>
+        <mat-tab label="Competitiveness - Preference Rank">
+            <mat-list class="notelist"  >
+
+
+            </mat-list>
+        </mat-tab>
+        <mat-tab label="Competitiveness - Subquota Selection Rank">
+            <mat-list class="notelist"  >
+
+
+            </mat-list>
+        </mat-tab>
+        <mat-tab label="Notes">
+            <mat-list class="notelist"  >
+
+
+            </mat-list>
+        </mat-tab>
+    </mat-tab-group>
+</div>

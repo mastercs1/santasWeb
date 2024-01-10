@@ -21,7 +21,7 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
   standalone: true,
 })
 export class IdentifyComponent {
-  applicantRef: string | null = null;
+ 
   localData: string | undefined;
   identification: identification = {
     applicantEligibility: '',
@@ -54,18 +54,12 @@ export class IdentifyComponent {
   constructor(private service: SearchingServiceService) {}
 
   ngOnInit() {
-    this.applicantRef = localStorage.getItem('applicantRef');
-      if (this.applicantRef) {
-        this.service.getIdentification(this.applicantRef).subscribe({
+    let applicantId = localStorage.getItem('applicantId');
+      if (applicantId) {
+        this.service.getIdentification(applicantId).subscribe({
           next: (response: any) => {
             if (response) {
               this.identification = response;
-              if (this.identification.applicantId) {
-                localStorage.setItem(
-                  'applicantId',
-                  this.identification.applicantId
-                );
-              }
             }
           },
         });
@@ -74,27 +68,21 @@ export class IdentifyComponent {
   onChange(event: MatTabChangeEvent) {
     const tab = event.tab.textLabel;
     if(tab === 'Identification Details'){
-      this.applicantRef = localStorage.getItem('applicantRef');
-      if (this.applicantRef) {
-        this.service.getIdentification(this.applicantRef).subscribe({
+      let applicantId = localStorage.getItem('applicantId');
+      if (applicantId) {
+        this.service.getIdentification(applicantId).subscribe({
           next: (response: any) => {
             if (response) {
               this.identification = response;
-              if (this.identification.applicantId) {
-                localStorage.setItem(
-                  'applicantId',
-                  this.identification.applicantId
-                );
-              }
             }
           },
         });
       }
     }
     if (tab === 'Contact Details') {
-      this.applicantRef = localStorage.getItem('applicantRef');
-      if (this.applicantRef) {
-        this.service.getAddress(this.applicantRef).subscribe({
+      let applicantId = localStorage.getItem('applicantId');
+      if (applicantId) {
+        this.service.getAddress(applicantId).subscribe({
           next: (response: Address[]) => {
             if (response) {
               response.map((add: Address) => {
@@ -111,9 +99,9 @@ export class IdentifyComponent {
       }
     }
     if (tab === 'Application Details') {
-      this.applicantRef = localStorage.getItem('applicantRef');
-      if (this.applicantRef) {
-        this.service.getAppDetails(this.applicantRef).subscribe({
+      let applicantId = localStorage.getItem('applicantId');
+      if (applicantId) {
+        this.service.getAppDetails(applicantId).subscribe({
           next: (response: AppDetails) => {
             if (response) {
               this.appDetails = response;
