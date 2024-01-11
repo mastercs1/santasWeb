@@ -9,8 +9,8 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-deem-component',
-  templateUrl: './deem-component.component.html',
-  styleUrls: ['./deem-component.component.scss'],
+  templateUrl: './overall-deem-component.component.html',
+  styleUrls: ['./overall-deem-component.component.scss'],
   standalone:true,
   imports:[  MatButtonModule,
     MatStepperModule,

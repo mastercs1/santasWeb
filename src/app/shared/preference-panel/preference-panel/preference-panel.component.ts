@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { PreferenceServiceService } from 'src/app/service/preference-service.service';
 import { PreferenceOverallDeemStatus } from 'src/app/interface/preference-overall-deem-status';
-import { DeemComponentComponent } from '../../deem-component/deem-component.component';
+import { DeemComponentComponent } from '../../overall-deem-component/overall-deem-component.component';
 @Component({
   selector: 'app-preference-panel',
   templateUrl: './preference-panel.component.html',
