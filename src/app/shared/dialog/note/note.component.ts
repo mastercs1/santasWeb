@@ -1,7 +1,6 @@
-import { Component, Input, OnInit ,ViewChild, ElementRef, AfterViewInit, Output, EventEmitter} from '@angular/core';
+import { Component, Input, OnInit , Output, EventEmitter} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import {Dialog, DialogRef, DIALOG_DATA, DialogModule} from '@angular/cdk/dialog';
 import { NoteContentComponent } from '../note-content/note-content.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { CommonModule } from '@angular/common';

@@ -10,12 +10,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { PreferenceServiceService } from 'src/app/service/preference-service.service';
 import { PreferenceOverallDeemStatus } from 'src/app/interface/preference-overall-deem-status';
+import { DeemComponentComponent } from '../../deem-component/deem-component.component';
 @Component({
   selector: 'app-preference-panel',
   templateUrl: './preference-panel.component.html',
   styleUrls: ['./preference-panel.component.scss'],
   standalone:true,
-  imports:[MatCardModule, MatDividerModule, MatListModule, MatTabsModule,CommonModule,MatIconModule,ReactiveFormsModule,MatButtonModule]
+  imports:[MatCardModule, MatDividerModule, MatListModule, MatTabsModule,CommonModule,MatIconModule,ReactiveFormsModule,MatButtonModule,DeemComponentComponent]
 })
 
 /** the clear design is preference id changes than destroy current module then using new preference id then ngonchange . to do this we need preference be a input value instead of value from service. **/
