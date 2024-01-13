@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
 import {FormBuilder, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -6,6 +6,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select'; 
 import { CommonModule } from '@angular/common';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-deem-component',
@@ -26,15 +27,17 @@ import { CommonModule } from '@angular/common';
 export class DeemComponentComponent {
   admission='';
   deemValue='';
- @Input()
- overAllDeemId:any
+  
  
   isEditable = false;
   firstFormGroup:any;
   secondFormGroup:any;
   thirdFormGroup:any;
+  overallDeemId:any;
+  
+  constructor(private _formBuilder: FormBuilder,@Inject(MAT_DIALOG_DATA) public data: any) {
+    this.overallDeemId = data.overallDeemId;
 
-  constructor(private _formBuilder: FormBuilder) {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required],
     });
@@ -52,7 +55,7 @@ export class DeemComponentComponent {
     return this.thirdFormGroup.get('thirdCtrl').value;
   }
   submit(){
-    console.log("overallDeemId= " + this.overAllDeemId);
+    console.log("overallDeemId= " + this.overallDeemId.toString());
     console.log("admission= "+ this.admission);
     console.log("deemValue= "+ this.deemValue);
     console.log("wht deemed= "+ this.getThirdCtrlValue());

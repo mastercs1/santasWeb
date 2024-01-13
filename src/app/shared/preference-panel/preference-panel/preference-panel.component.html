@@ -70,22 +70,27 @@
                 </mat-list-item>
                 
               <mat-list-item>
-                <button mat-raised-button style="background-color: aqua;"> 
-                    <ng-container *ngIf="overallDeem?.deemedValue!=''" >Undeem Preference </ng-container>
-                    <ng-container *ngIf="overallDeem?.deemedValue=='' ">deem Preference </ng-container>
-                 
-                </button>
+              <ng-container *ngIf="overallDeem?.deemedValue=='' ">
+                <button mat-raised-button style="background-color: aqua;"   (click)="openStepper(overallDeem?.odsId || '')">deem Preference </button>
+              </ng-container>
+
+              <ng-container *ngIf="overallDeem?.deemedValue!=''">
+                <button mat-raised-button style="background-color: aqua;"   (click)="undeem()">Undeem Preference </button>
+              </ng-container>
+
+
             </mat-list-item>
             </mat-list>
-            <app-deem-component [overAllDeemId] = "overallDeem?.odsId"></app-deem-component>
+            <!-- <app-deem-component [overAllDeemId] = "overallDeem?.odsId"></app-deem-component> -->
         </mat-tab>
 
         <mat-tab label="Eligibility">
-            <mat-list class="notelist"  >
-
-
-            </mat-list>
+            <ng-container *ngIf(dataSource)></ng-container>
+          <app-eligibility [dataSource]="dataSource"></app-eligibility>
         </mat-tab>
+
+
+
         <mat-tab label="Competitiveness - Preference Rank">
             <mat-list class="notelist"  >
 

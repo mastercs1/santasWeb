@@ -12,6 +12,7 @@ import { NavbarModule } from './nav-bar/nav-bar.module';
 import { SelectComponent } from './shared/select/select.component';
 import { MatSelectModule } from '@angular/material/select';
 import { TimepickerComponent } from './shared/timepicker/timepicker.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { TimepickerComponent } from './shared/timepicker/timepicker.component';
     NavbarModule,
     MatSelectModule,
     TimepickerComponent,
-    SelectComponent
+    SelectComponent,
+    MatDialogModule,
   ],
   exports:[
     
