@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { PreferenceDetails } from '../interface/preference-details';
 import { PreferenceOverallDeemStatus } from '../interface/preference-overall-deem-status';
 import { PreferenceEligibility } from '../interface/preference-eligibility';
+import { PreferenceRank } from '../interface/preference-rank';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class PreferenceServiceService {
   private preferenceIdSubject: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
   private preferenceDetailsUrl = 'http://localhost:8089/santasweb/applicant/preferencedetails';
   private preferenceOverallDeemUrl="http://localhost:8089/santasweb/applicant/preferencedetails/overalldeem";
-  private preferenceStatusDeemUrl="http://localhost:8089/santasweb/applicant/preferencedetails/Eligibility"
+  private preferenceStatusDeemUrl="http://localhost:8089/santasweb/applicant/preferencedetails/eligibility";
+  private preferenceRankDeemurl="http://localhost:8089/santasweb/applicant/preferencedetails/rank"
   constructor(private http: HttpClient) { }
 
 
@@ -38,6 +40,11 @@ export class PreferenceServiceService {
   getPreferenceStatus(preferenceId:string):Observable<PreferenceEligibility[]>{
     const getIndividualUrl = `${this.preferenceStatusDeemUrl}/`+preferenceId;
     return this.http.get<PreferenceEligibility[]>(getIndividualUrl);
+}
+
+getPreferenceRank(preferenceId:string):Observable<PreferenceRank[]>{
+  const getIndividualUrl = `${this.preferenceRankDeemurl}/`+preferenceId;
+  return this.http.get<PreferenceRank[]>(getIndividualUrl);
 }
 
 }

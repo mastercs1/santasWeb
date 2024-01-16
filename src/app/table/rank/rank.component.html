@@ -1,0 +1,80 @@
+<!-- preference-details.component.html -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="{{displayedColumns[0]}}">
+        <th mat-header-cell *matHeaderCellDef>Qualification</th>
+        <td mat-cell *matCellDef="let element"> {{element.qualification}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="{{displayedColumns[1]}}">
+        <th mat-header-cell *matHeaderCellDef>Rank Name </th>
+        <td mat-cell *matCellDef="let element "> {{element.rankName}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="{{displayedColumns[2]}}">
+        <th mat-header-cell *matHeaderCellDef>Rank Type</th>
+        <td mat-cell *matCellDef="let element "> {{element.rankType}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="{{displayedColumns[3]}}">
+        <th mat-header-cell *matHeaderCellDef>Rank Status</th>
+        <td mat-cell *matCellDef="let element "> {{element.rankStatus}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{displayedColumns[4]}}">
+        <th mat-header-cell *matHeaderCellDef>System Rank</th>
+        <td mat-cell *matCellDef="let element"> {{element.systemRank}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{displayedColumns[5]}}">
+        <th mat-header-cell *matHeaderCellDef>How Derived</th>
+        <td mat-cell *matCellDef="let element"> {{element.howDerive}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{displayedColumns[6]}}">
+        <th mat-header-cell *matHeaderCellDef>Deemed Value </th>
+        <td mat-cell *matCellDef="let element "> {{element.deemedValue}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{displayedColumns[7]}}">
+        <th mat-header-cell *matHeaderCellDef>Why Deemed</th>
+        <td mat-cell *matCellDef="let element "> {{element.whydeemed}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{displayedColumns[8]}}">
+        <th mat-header-cell *matHeaderCellDef>Why Undeemed</th>
+        <td mat-cell *matCellDef="let element "> {{element.whyUndeemed}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="{{displayedColumns[9]}}">
+        <th mat-header-cell *matHeaderCellDef>When</th>
+        <td mat-cell *matCellDef="let element "> {{element.when}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{displayedColumns[10]}}">
+        <th mat-header-cell *matHeaderCellDef>Who</th>
+        <td mat-cell *matCellDef="let element "> {{element.who}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="{{displayedColumns[11]}}">
+        <th mat-header-cell *matHeaderCellDef>Action </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-raised-button (click)="openStepper(element?.whydeemed|| '')">
+                {{ element.whydeemed === '' ? 'Deem' : 'UnDeem' }}
+            </button>
+
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -14,6 +14,9 @@ import { DeemComponentComponent } from '../../overall-deem-component/overall-dee
 import { DeemDialogServiceService } from 'src/app/service/deem-dialog-service.service';
 import { EligibilityComponent } from 'src/app/table/eligibility/eligibility.component';
 import { PreferenceEligibility } from 'src/app/interface/preference-eligibility';
+import { RankComponent } from 'src/app/table/rank/rank.component';
+import { PreferenceRank } from 'src/app/interface/preference-rank';
+
 
 @Component({
   selector: 'app-preference-panel',
@@ -31,6 +34,7 @@ import { PreferenceEligibility } from 'src/app/interface/preference-eligibility'
     MatButtonModule,
     DeemComponentComponent,
     EligibilityComponent,
+    RankComponent,
   ],
 })
 
@@ -44,7 +48,8 @@ export class PreferencePanelComponent implements OnInit {
   preferenceDetails: PreferenceDetails | undefined;
   overallDeem: PreferenceOverallDeemStatus | undefined;
   dataSource!: PreferenceEligibility[];
-
+  ranks!: PreferenceRank[];
+  preferenceRank!:PreferenceRank[];
   constructor(
     private preferenceService: PreferenceServiceService,
     private stepperDialogService: DeemDialogServiceService
@@ -53,11 +58,11 @@ export class PreferencePanelComponent implements OnInit {
   ngOnInit() {
     this.preferenceService.getPreferenceId().subscribe((preferenceId) => {
       this.preferenceId = preferenceId;
-
       if (this.preferenceId) {
         this.getPreferenceDetails();
         this.getOverallDeemStatus();
         this.getEligibility();
+        this.getPreferenceRank();
       }
     });
   }
@@ -74,7 +79,8 @@ export class PreferencePanelComponent implements OnInit {
     if (tab === 'Eligibility') {
       this.getEligibility();
     }
-    if (tab === 'Application Notes') {
+    if (tab === 'Competitiveness - Preference Rank') {
+      this.getPreferenceRank();
     }
   }
 
@@ -110,10 +116,21 @@ export class PreferencePanelComponent implements OnInit {
     }
   }
 
+  private getPreferenceRank() :void{
+    if (this.preferenceId) {
+      this.preferenceService.getPreferenceRank(this.preferenceId).subscribe({
+        next: (response: PreferenceRank[]) => {
+          this.preferenceRank = response;
+        },
+      });
+    }
+  }
+  
+
   openStepper(id: string) {
     this.stepperDialogService.openStepperDialog(id);
   }
   undeem() {
-    console.log('2');
+    console.log(' no yet implement ');
   }
 }
